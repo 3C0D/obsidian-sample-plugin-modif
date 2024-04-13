@@ -1,6 +1,10 @@
 import esbuild from "esbuild";
 import process from "process";
 import builtins from "builtin-modules";
+import { config } from 'dotenv';
+import manifest from "./manifest.json" assert { type: "json" };
+
+config();
 
 const banner =
 `/*
@@ -9,13 +13,22 @@ if you want to view the source, please visit the github repository of this plugi
 */
 `;
 
-const prod = (process.argv[2] === "production");
+const prod = process.argv[2] === "production";
+let outdir = "./";
+if (!prod) {
+	const vaultDir = process.env.LINKED_VAULT
+	// process.env.REAL === "1" ? process.env.REAL_VAULT : process.env.TEST_VAULT;
+	outdir = `${vaultDir}/.obsidian/plugins/${manifest.id}`;
+}
+
+console.info(`\nSaving plugin to ${outdir}\n`);
 
 const context = await esbuild.context({
 	banner: {
 		js: banner,
 	},
-	entryPoints: ["main.ts"],
+	minify: prod ? true : false,
+	entryPoints: ["src/main.ts"],
 	bundle: true,
 	external: [
 		"obsidian",
@@ -37,7 +50,8 @@ const context = await esbuild.context({
 	logLevel: "info",
 	sourcemap: prod ? false : "inline",
 	treeShaking: true,
-	outfile: "main.js",
+	outdir: outdir,
+	outbase: "./src",
 });
 
 if (prod) {
