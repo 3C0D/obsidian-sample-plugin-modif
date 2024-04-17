@@ -4,7 +4,7 @@ import builtins from "builtin-modules";
 import { config } from 'dotenv';
 import manifest from "./manifest.json" assert { type: "json" };
 import { isValidPath } from "./scripts/utils.mts";
-import { copyFilesToTargetDir } from "./scripts/copyManCss.mts";
+import { copyFilesToTargetDir } from "./scripts/utils.mts";
 
 
 config();

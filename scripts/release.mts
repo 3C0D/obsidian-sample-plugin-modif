@@ -8,14 +8,6 @@ const rl = readline.createInterface({
     output: process.stdout,
 });
 
-function askQuestion(question) {
-    return new Promise((resolve) => {
-        rl.question(question, (input) => {
-            resolve(input.trim());
-        });
-    });
-}
-
 let exists, tag;
 const body = ".github/workflows/release-body.md"
 

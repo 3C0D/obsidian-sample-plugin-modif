@@ -1,7 +1,7 @@
-import * as fs from 'fs/promises';
 import process from "process";
 import { config } from 'dotenv';
 import manifest from "../manifest.json" assert { type: "json" };
+import { copyFilesToTargetDir } from './utils.mts';
 
 config();
 
@@ -12,10 +12,3 @@ const css = `${targetDir}/styles.css`;
 
 await copyFilesToTargetDir(targetDir, man, css);
 
-export async function copyFilesToTargetDir(targetDir: string, man: string, css: string) {
-    // Create the target directory if it doesn't exist
-    await fs.mkdir(targetDir, { recursive: true });
-    // Copy manifest.json and styles.css
-    await fs.copyFile("./manifest.json", man);
-    await fs.copyFile("./styles.css", css);
-}

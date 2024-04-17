@@ -21,3 +21,11 @@ export async function isValidPath(path: string) {
         return false;
     }
 }
+
+export async function copyFilesToTargetDir(targetDir: string, man: string, css: string) {
+    // Create the target directory if it doesn't exist
+    await fs.mkdir(targetDir, { recursive: true });
+    // Copy manifest.json and styles.css
+    await fs.copyFile("./manifest.json", man);
+    await fs.copyFile("./styles.css", css);
+}
