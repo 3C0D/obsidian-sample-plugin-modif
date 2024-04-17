@@ -1,16 +1,16 @@
 {
 	"name": "obsidian-sample-plugin-modif",
 	"version": "1.0.0",
-	"description": "modifief sample plugin",
+	"description": "modified sample plugin",
 	"main": "main.js",
 	"scripts": {
-		"dev": "node esbuild.config.mjs",
-		"cms": "node scripts/copyManCss.mjs",
-		"start": "npm i && tsx scripts/start.mjs",
+		"dev": "tsx esbuild.config.mts",
+		"start": "tsx scripts/start.mts",
 		"acp": "tsx scripts/acp.mts",
 		"bacp": "tsx scripts/acp.mts -b",
+		"real": "SET REAL=1 && npm run build",
 		"test": "tsx scripts/test-plugin.mts",
-		"build": "tsc -noEmit -skipLibCheck && node esbuild.config.mjs production",
+		"build": "tsc -noEmit -skipLibCheck && tsx esbuild.config.mts production",
 		"version": "tsx scripts/update-version.mts",
 		"release": "tsx scripts/release.mts"
 	},

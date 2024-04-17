@@ -20,8 +20,8 @@ let targetPath = path.join(vaultPath, '.obsidian', 'plugins', '$ID');
 
 // Create readline interface for user input
 const rl = readline.createInterface({
-    input: process.stdin,
-    output: process.stdout
+    input: process.stdin as NodeJS.ReadableStream,
+    output: process.stdout as NodeJS.WritableStream,
 });
 
 if (!checkManifest()) {

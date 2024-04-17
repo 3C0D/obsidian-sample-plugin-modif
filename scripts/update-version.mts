@@ -6,8 +6,8 @@ import * as semver from 'semver';
 
 function updateVersion() {
     const rl = readline.createInterface({
-        input: process.stdin,
-        output: process.stdout
+        input: process.stdin as NodeJS.ReadableStream,
+        output: process.stdout  as NodeJS.WritableStream
     });
 
     rl.question(dedent`

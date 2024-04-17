@@ -1,30 +1,26 @@
+// rl, build, input: askQuestion, rl.close, cleanedInput, gitadd, gitcommit "cleanedInput", gitpush, process.exit
+
 import { execSync } from 'child_process';
 import * as readline from 'readline';
+import { askQuestion, cleanInput } from './utils.mts';
 
 const rl = readline.createInterface({
-    input: process.stdin,
-    output: process.stdout,
+    input: process.stdin as NodeJS.ReadableStream,
+    output: process.stdout as NodeJS.WritableStream,
 });
-
-function askQuestion(question: string): Promise<string> {
-    return new Promise((resolve) => {
-        rl.question(question, (input) => {
-            resolve(input.trim());
-        });
-    });
-}
 
 (async () => {
     try {
         if (process.argv.includes('-b')) {
+            console.log('Building...');
             execSync('npm run build');
-            console.log('npm run build successful.');
+            console.log('Build successful.');
         }
 
-        const input: string = await askQuestion('Enter commit message: ');
-        rl.close();
+        const input: string = await askQuestion('Enter commit message: ', rl);
+        rl.close();   
 
-        const cleanedInput = input.replace(/^["`]$/g, "'").replace(/\r\n/g, '\n');  
+        const cleanedInput = cleanInput(input);
         
         execSync('git add .');
         execSync(`git commit -m "${cleanedInput}"`);
@@ -33,6 +29,8 @@ function askQuestion(question: string): Promise<string> {
     } catch (error) {
         console.error('Error:', error.message);
     } finally {
+        console.log('Exiting...');
         process.exit();
     }
 })();
+

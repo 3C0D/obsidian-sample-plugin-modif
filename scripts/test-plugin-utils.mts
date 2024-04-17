@@ -4,7 +4,7 @@ import * as readline from 'readline';
 import * as path from 'path';
 import { exec } from 'child_process';
 import * as dotenv from 'dotenv';
-
+import {isValidPath} from './utils.mts';
 
 
 export function createPathandCopy(rl: readline.Interface, targetPath: string) {
@@ -78,14 +78,7 @@ export async function isVaultPathValid(vaultPath: string) {
     return vaultPath && (await isValidPath(vaultPath)) && (await isVault(vaultPath));
 }
 
-async function isValidPath(path: string) {
-    try {
-        await fs.access(path.trim());
-        return true;
-    } catch (error) {
-        return false;
-    }
-}
+
 
 export async function checkManifest() {
     const manifest = path.join(process.cwd(), 'manifest.json')
