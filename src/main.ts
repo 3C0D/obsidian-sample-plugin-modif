@@ -14,7 +14,6 @@ export default class MyPlugin extends Plugin {
 	settings: MyPluginSettings;
 
 	async onload() {
-		console.log("totot")
 		await this.loadSettings();
 		this.addSettingTab(new SampleSettingTab(this.app, this));
 	}
