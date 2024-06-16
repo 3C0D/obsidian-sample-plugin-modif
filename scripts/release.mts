@@ -43,8 +43,8 @@ async function createTag() {
     if (exists) {
         rl.question(`Tag ${tag} already exists. Do you want to replace it? (Yes/No): `, async (answer) => {
             if (answer.toLowerCase() !== 'yes' && answer.toLowerCase() !== 'y') {
-                process.exit();
                 console.log(`operation aborted`);
+                process.exit();
             } else {
                 execSync(`git tag -d ${tag}`);
                 execSync(`git push origin :refs/tags/${tag}`); // Push the delete to remote repository
