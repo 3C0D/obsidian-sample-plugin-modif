@@ -36,12 +36,10 @@ async function createReleaseNotesFile(tagMessage: string) {
 async function createTag() {
     const currentVersion = process.env.npm_package_version;
     tag = `${currentVersion}`;
-    // tag = '2.0.0';
 
     // Check or create body.md before asking for the commit message
     await checkOrCreateFile(body);
-    // exists = execSync(`git tag -l ${tag}`).toString().includes(tag); doesn't work if tag deleted from github. still find the referencement
-    exists = execSync(`git ls-remote --tags origin`).includes(`refs/tags/${tag}`)
+    exists = execSync(`git tag -l ${tag}`).toString().includes(tag);
     if (exists) {
         rl.question(`Tag ${tag} already exists. Do you want to replace it? (Yes/No): `, async (answer) => {
             if (answer.toLowerCase() !== 'yes' && answer.toLowerCase() !== 'y') {
@@ -61,7 +59,7 @@ async function createTag() {
 
 createTag();
 
-async function doCommit(currentVersion: string | undefined) {
+async function doCommit(currentVersion: string|undefined) {
     rl.question(`Enter the commit message for version ${currentVersion}: `, async (message) => {
         doNextSteps(message);
         rl.close();
