@@ -41,9 +41,10 @@ async function createTag() {
     await checkOrCreateFile(body);
     exists = execSync(`git tag -l ${tag}`).toString().includes(tag);
     if (exists) {
-        rl.question(`Tag ${tag} already exists.If you continue, it will be replaced. Do you want to continue? (Yes/No): `, async (answer) => {
+        rl.question(`Tag ${tag} already exists. Do you want to replace it? (Yes/No): `, async (answer) => {
             if (answer.toLowerCase() !== 'yes' && answer.toLowerCase() !== 'y') {
                 process.exit();
+                console.log(`operation aborted`);
             } else {
                 execSync(`git tag -d ${tag}`);
                 execSync(`git push origin :refs/tags/${tag}`); // Push the delete to remote repository
