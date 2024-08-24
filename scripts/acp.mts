@@ -1,5 +1,3 @@
-// rl, build, input: askQuestion, rl.close, cleanedInput, gitadd, gitcommit "cleanedInput", gitpush, process.exit
-
 import { execSync } from 'child_process';
 import * as readline from 'readline';
 import { askQuestion, cleanInput } from './utils.mts';

@@ -4,13 +4,14 @@
 	"description": "modified sample plugin",
 	"main": "main.js",
 	"scripts": {
-		"dev": "tsx esbuild.config.mts",
+		"dev": "tsx scripts/esbuild.config.mts",
 		"start": "tsx scripts/start.mts",
+		"build": "tsc -noEmit -skipLibCheck && tsx scripts/esbuild.config.mts production",
+		"real": "SET REAL=1 && npm run build",
+		
 		"acp": "tsx scripts/acp.mts",
 		"bacp": "tsx scripts/acp.mts -b",
-		"real": "SET REAL=1 && npm run build",
-		"test": "tsx scripts/test-plugin.mts",
-		"build": "tsc -noEmit -skipLibCheck && tsx esbuild.config.mts production",
+				
 		"version": "tsx scripts/update-version.mts",
 		"release": "tsx scripts/release.mts"
 	},

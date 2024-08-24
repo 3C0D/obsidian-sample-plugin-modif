@@ -2,7 +2,7 @@ import * as readline from 'readline';
 import * as path from 'path';
 import * as dotenv from 'dotenv';
 import { execSync } from 'child_process';
-import { checkManifest, createPathandCopy, getEnv, isVaultPathValid, promptNewPath } from './test-plugin-utils.mjs';
+import { checkManifest, createPathandCopy, getEnv, isVaultPathValid, promptNewPath } from './real-test-plugin-utils.mjs';
 
 const currentEvent = process.env.npm_lifecycle_event;
 console.log(`Starting the ${currentEvent} process...\n`);
