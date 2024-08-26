@@ -5,6 +5,9 @@ import { config } from 'dotenv';
 import manifest from "../manifest.json" assert { type: "json" };
 import { isValidPath } from "./utils.mts";
 import { copyFilesToTargetDir } from "./utils.mts";
+import { sassPlugin } from 'esbuild-sass-plugin'
+import path from "path";
+import fs from 'fs';
 
 
 config();
@@ -35,12 +38,19 @@ if ((!prod && REAL !== "-1") || REAL === "1") {
 
 console.info(`\nSaving plugin to ${outdir}\n`);
 
+const entryPoints = ['src/main.ts'];
+const scssPath = path.join(process.cwd(), 'src', 'styles.scss');
+
+if (fs.existsSync(scssPath)) {
+	entryPoints.push('src/styles.scss');
+}
+
 const context = await esbuild.context({
 	banner: {
 		js: banner,
 	},
 	minify: prod ? true : false,
-	entryPoints: ["src/main.ts"],
+	entryPoints,
 	bundle: true,
 	external: [
 		"obsidian",
@@ -57,6 +67,7 @@ const context = await esbuild.context({
 		"@lezer/highlight",
 		"@lezer/lr",
 		...builtins],
+	plugins: [sassPlugin()],
 	format: "cjs",
 	target: "es2018",
 	logLevel: "info",
