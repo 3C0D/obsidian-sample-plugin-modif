@@ -11,7 +11,7 @@ const rl = readline.createInterface({
     try {
         if (process.argv.includes('-b')) {
             console.log('Building...');
-            execSync('npm run build');
+            execSync('npm run build', { stdio: 'inherit' });
             console.log('Build successful.');
         }
 
