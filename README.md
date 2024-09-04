@@ -3,6 +3,8 @@
 The goal of this "sample" is to automate the development and publication processes on github, including the creation of releases.
 
 ## Development (Add this to your README)
+  
+**Do a npm i first**  
 
 ### Optional (SASS):
 If you add a `styles.scss` file to the `src` folder, it will automatically be converted to CSS when you run commands such as `npm run dev`.
