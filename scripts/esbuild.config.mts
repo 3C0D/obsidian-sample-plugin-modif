@@ -104,7 +104,6 @@ if (prod) {
 	if (REAL === "1") {
 		await copyFilesToTargetDir(vaultDir, isScss, manifest.id, REAL);
 	}
-	// await removeMainCss(outdir);
 	process.exit(0);
 } else {
 	await copyFilesToTargetDir(vaultDir, isScss, manifest.id, REAL);
