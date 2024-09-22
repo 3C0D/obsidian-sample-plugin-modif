@@ -20,8 +20,12 @@ const rl = readline.createInterface({
 
         const cleanedInput = cleanInput(input);
 
-        execSync('git add .');
-        execSync(`git commit -m "${cleanedInput}"`);
+        try {
+            execSync(`git add .`);
+            execSync(`git commit -m "${cleanedInput}"`);
+        } catch (commitError) {
+            console.log('Commit already exists.');
+        }
 
         // get current branch name
         const currentBranch = execSync('git rev-parse --abbrev-ref HEAD').toString().trim();
