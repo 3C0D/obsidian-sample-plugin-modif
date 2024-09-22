@@ -1,16 +1,13 @@
 # Obsidian Sample Plugin Modifications
 
-The goal of this "sample" is to automate the development and publication processes on github, including the creation of releases.
-
 ## Development (Add this to your README)
 
-### Optional (SASS):
+Automate the development and publication processes on github, including releases. You are supposed to git clone your plugin out of the vault and set the right path in the .env file (1 for your trying vault, 1 for the real vault).
+
+### Sass:
 If you add a `styles.scss` file to the src folder, it will be automatically converted to CSS when running commands like npm run dev or npm run build.   
   
 ### Environment Setup
-  
-- **Development in the plugins folder of your vault:**
-  - Set the `REAL` variable to `-1` in the `.env` file. Or delete the file. Run the usual npm commands.
 
 - **Development outside the vault:**
   - If your plugin's source code is outside the vault, the necessary files will be automatically copied to the targeted vault. Set the paths in the .env file. Use TestVault for the development vault and RealVault to simulate production.  
