@@ -31,7 +31,6 @@
 		"tslib": "2.4.0",
 		"typescript": "4.7.4",
 		"fs-extra": "^11.2.0",
-		"json-stringify-pretty-compact": "^4.0.0",
 		"semver": "^7.6.0",
 		"tsx": "^4.7.1"
 	}
