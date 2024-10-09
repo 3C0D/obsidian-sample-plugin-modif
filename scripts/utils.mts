@@ -1,6 +1,14 @@
 import * as fs from 'fs/promises';
 import path from 'path';
 import * as readline from 'readline';
+import { execSync } from 'child_process';
+
+export function createReadlineInterface(): readline.Interface {
+    return readline.createInterface({
+        input: process.stdin as NodeJS.ReadableStream,
+        output: process.stdout as NodeJS.WritableStream,
+    });
+}
 
 export const askQuestion = async (question: string, rl: readline.Interface): Promise<string> => {
     try {
@@ -63,3 +71,12 @@ export const copyFile = async (source: string, destination: string, message = ""
         console.error('Error copying file:', err);
     }
 };
+
+export function gitExec(command: string): void {
+    try {
+        execSync(command, { stdio: 'inherit' });
+    } catch (error) {
+        console.error(`Error executing '${command}':`, error.message);
+        throw error;
+    }
+}

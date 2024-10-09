@@ -1,13 +1,9 @@
 import { writeFile, stat } from 'fs/promises';
 import { execSync } from 'child_process';
 import dedent from 'dedent';
-import * as readline from 'readline';
-import { askQuestion } from './utils.mts';
+import { askQuestion, createReadlineInterface } from './utils.mts';
 
-const rl = readline.createInterface({
-    input: process.stdin,
-    output: process.stdout,
-});
+const rl = createReadlineInterface();
 
 const body = ".github/workflows/release-body.md"
 
@@ -85,7 +81,7 @@ async function doNextSteps(message: string, tag: string) {
     console.log(`Release ${tag} pushed to repo.`);
     console.log(dedent`
         with message: 
-                ${toShow}
+            ${toShow}
     `);
 }
 
