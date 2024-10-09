@@ -9,9 +9,12 @@ Automate the development and publication processes on github, including releases
 If you want more options like sass, check out other branches     
   
 ### Environment Setup
-  
+
+main.ts and styles.css must be in `src` folder. if you do a build `styles.css` will be in **root** folder that's normal, to do the release later.
+
 - **Development in the plugins folder of your vault:**
   - Set the `REAL` variable to `-1` in the `.env` file. Or delete the file. Run the usual npm commands.
+
 
 - **Development outside the vault:**
   - If your plugin's source code is outside the vault, the necessary files will be automatically copied to the targeted vault. Set the paths in the .env file. Use TestVault for the development vault and RealVault to simulate production.  
