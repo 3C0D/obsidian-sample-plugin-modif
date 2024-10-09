@@ -1,42 +1,45 @@
-# Obsidian Plugin Development Guide
+## Development
 
-## Initial Setup
+This plugin uses a template that automates the development and publication processes on GitHub, including releases. You can develop either inside or outside your Obsidian vault.
 
-1. For SASS support, select the `sass-ready` branch in the repository.
-2. Place `main.ts` and `styles.css` in the `src` folder.
-3. Choose your development environment:
-   - Inside your vault's plugins folder: Delete the `.env` file.
-   - Outside the vault: Configure paths in the `.env` file.
+### Environment Setup
 
-## Recommended Development Workflow
+- `main.ts` and `styles.css` must be in the `src` folder.
+- After building, `styles.css` will appear in the root folder (this is normal for the release process).
 
-1. `npm run start`: Initiates development.
-2. `npm run bacp`: Builds, adds, commits, and pushes changes.
-3. `npm run version`: Updates the version.
-4. `npm run release`: Creates a new release on GitHub.
+#### Development Options:
+1. **Inside the vault's plugins folder:**
+   - Delete the `.env` file.
+   - Run npm commands as usual.
 
-## Available Commands
+2. **Outside the vault:**
+   - Set the paths in the `.env` file:
+     - `TestVault` for development
+     - `RealVault` for production simulation
+   - Necessary files will be automatically copied to the targeted vault.
 
-- `npm run dev` / `npm start`: Starts development.
-- `npm run build`: Builds the project.
-- `npm run real`: Simulates a traditional installation in your REAL vault.
-- `npm run bacp`: Builds, adds, commits, and pushes (with commit message).
-- `npm run acp`: Adds, commits, and pushes (without building).
-- `npm run version`: Updates version in relevant files.
-- `npm run release`: Creates a new release on GitHub.
+### Available Commands
 
-## Important Notes
+- `npm run start`: Opens VS Code, runs `npm install`, then `npm run dev`
+- `npm run dev`: For development
+- `npm run build`: Builds the project
+- `npm run real`: Simulates a traditional plugin installation in your REAL vault
+- `npm run bacp`: Builds, adds, commits, and pushes (prompts for commit message)
+- `npm run acp`: Adds, commits, and pushes (without building)
+- `npm run version`: Updates version, modifies relevant files, then adds, commits, and pushes
+- `npm run release`: Creates a GitHub release (prompts for release title, can be multiline using `\n`)
 
-- The `build` command places `styles.css` in the root folder for release preparation.
-- Use `TestVault` for development and `RealVault` to simulate production in the `.env` file.
-- Versions are automatically pushed with the message "updated to version x.x.x".
-- Release titles can be multi-line using `\n`.
+### Recommended Workflow
 
-## Automation
+1. `npm run start`
+2. `npm run bacp`
+3. `npm run version`
+4. `npm run release`
 
-This template automates:
-- Development and publication processes on GitHub.
-- Release creation.
-- Copying necessary files to the targeted vault (if developed outside the vault).
+### Additional Features
 
-Remember to check other branches for additional options like SASS.
+- **obsidian-typings**: This template automatically includes obsidian-typings, providing access to additional types not present in the official API.
+
+### SASS Support
+
+For SASS support, check out the `sass-ready` branch in the original template repository. Note that this feature is not included in the standard template and won't be automatically available in derived plugins.
