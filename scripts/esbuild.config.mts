@@ -101,6 +101,7 @@ async function main() {
 		}
 		try {
 			await context.rebuild();
+			if (REAL === "1") console.log("Installed in the real vault");
 		} catch (e) {
 			console.log(e);
 		}
