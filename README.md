@@ -1,22 +1,28 @@
+# Plugin Development Template
+
 ## Development
 
 This plugin uses a template that automates the development and publication processes on GitHub, including releases. You can develop either inside or outside your Obsidian vault.
 
 ### Environment Setup
 
-- `main.ts` and `styles.css` must be in the `src` folder.
-- After building, `styles.css` will appear in the root folder (this is normal for the release process).
+#### File Structure
+- All source files must be in the `src` folder:
+  - `main.ts`
+  - `styles.css`
 
-#### Development Options:
+> **Note:** If `styles.css` is accidentally placed in the root folder instead of `src`, it will be automatically moved to the correct location when running any development command. After building, a copy of `styles.css` will appear in the root folder as part of the normal release process.
+
+#### Development Options
 1. **Inside the vault's plugins folder:**
-   - Delete the `.env` file.
-   - Run npm commands as usual.
+   - Delete the `.env` file
+   - Run npm commands as usual
 
 2. **Outside the vault:**
    - Set the paths in the `.env` file:
      - `TestVault` for development
      - `RealVault` for production simulation
-   - Necessary files will be automatically copied to the targeted vault.
+   - Necessary files will be automatically copied to the targeted vault
 
 ### Available Commands
 
