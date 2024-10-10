@@ -101,7 +101,6 @@ async function main() {
 		}
 		try {
 			await context.rebuild();
-			console.log("Build successful");
 		} catch (e) {
 			console.log(e);
 		}
