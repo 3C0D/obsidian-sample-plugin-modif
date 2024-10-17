@@ -67,6 +67,7 @@ async function main() {
 		bundle: true,
 		external: [
 			"obsidian",
+			"obsidian-typings",
 			"electron",
 			"@codemirror/autocomplete",
 			"@codemirror/collab",
