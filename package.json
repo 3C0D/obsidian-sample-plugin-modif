@@ -3,7 +3,6 @@
 	"version": "1.0.0",
 	"description": "modified sample plugin",
 	"main": "main.js",
-	"type": "module",
 	"scripts": {
 		"start": "npm i && cross-env REAL=0 node scripts/start.mjs",
 		"dev": "cross-env REAL=0 tsx scripts/esbuild.config.mts",

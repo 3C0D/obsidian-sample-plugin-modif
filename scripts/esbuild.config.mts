@@ -67,7 +67,6 @@ async function main() {
 		bundle: true,
 		external: [
 			"obsidian",
-			"obsidian-typings",
 			"electron",
 			"@codemirror/autocomplete",
 			"@codemirror/collab",
@@ -83,7 +82,7 @@ async function main() {
 			...builtins
 		],
 		format: "cjs",
-		target: "es2018",
+		target: "es2021",
 		logLevel: "info",
 		sourcemap: prod ? false : "inline",
 		treeShaking: true,
