@@ -1,7 +1,13 @@
 @echo off
 setlocal enabledelayedexpansion
 
-echo Replacing master branch with sass-ready
+echo This script will replace the main branch with the content of the sass-ready branch.
+
+:: Ask for confirmation
+set /p CONFIRM=Are you sure you want to proceed? (Y/N): 
+if /i "%CONFIRM%" neq "Y" goto :end
+
+echo Replacing main branch with sass-ready
 
 :: Check if we're in a Git repo
 git rev-parse --is-inside-work-tree >nul 2>&1
@@ -17,24 +23,24 @@ if %errorlevel% neq 0 (
     goto :end
 )
 
-:: Switch to master branch
-git checkout master
+:: Switch to main branch
+git checkout main
 if %errorlevel% neq 0 (
-    echo Unable to switch to master branch.
+    echo Unable to switch to main branch.
     goto :end
 )
 
-:: Replace master content with sass-ready
+:: Replace main content with sass-ready
 git reset --hard sass-ready
 if %errorlevel% neq 0 (
-    echo Unable to reset master to sass-ready.
+    echo Unable to reset main to sass-ready.
     goto :end
 )
 
 :: Push changes
-git push --force origin master
+git push --force origin main
 if %errorlevel% neq 0 (
-    echo Unable to push changes to master.
+    echo Unable to push changes to main.
     goto :end
 )
 
