@@ -1,4 +1,7 @@
-# Obsidian Sample Plugin Modifications
+# Obsidian Sample Plugin Modifications Sass Ready
+
+## Installation (!Important)
+When you are using the template for this branch,you need to check use all branchs. there is a batch in the repo to replace the master branch by sass-ready one. run this once
 
 ## Development (Add this to your README)
 
