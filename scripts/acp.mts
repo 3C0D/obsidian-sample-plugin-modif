@@ -16,7 +16,7 @@ async function main(): Promise<void> {
         const cleanedInput = cleanInput(input);
 
         try {
-            gitExec('git add .');
+            gitExec('git add -A');
             gitExec(`git commit -m "${cleanedInput}"`);
         } catch (commitError) {
             console.log('Commit already exists or failed.');
