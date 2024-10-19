@@ -54,15 +54,6 @@ export async function copyFilesToTargetDir(outDir: string, manifestId: string): 
     }
 }
 
-export const removeMainCss = async (outdir: string): Promise<void> => {
-    const mainCssPath = path.join(outdir, 'main.css');
-    await fs.unlink(mainCssPath).catch(error => {
-        if (error.code !== 'ENOENT') {
-            console.error(`Error removing main.css: ${error}`);
-        }
-    });
-};
-
 export const copyFile = async (source: string, destination: string, message = ""): Promise<void> => {
     try {
         await fs.copyFile(source, destination);

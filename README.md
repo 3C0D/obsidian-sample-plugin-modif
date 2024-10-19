@@ -48,4 +48,5 @@ This plugin uses a template that automates the development and publication proce
 
 ### SASS Support
 
-For SASS support, check out the `sass-ready` branch in the original template repository. Note that this feature is not included in the standard template and won't be automatically available in derived plugins.
+For SASS support, check out the `sass-ready` branch in the original template repository. 
+When you are using the template for this branch, you need to check use all branchs option. then after you clone your new plugin, there is a batch in the root folder to replace the master branch by sass-ready one. run this once
