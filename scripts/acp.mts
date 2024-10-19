@@ -20,7 +20,7 @@ const rl = readline.createInterface({
 
         const cleanedInput = cleanInput(input);
 
-        execSync('git add .');
+        execSync('git add -A');
         execSync(`git commit -m "${cleanedInput}"`);
 
         // get current branch name
