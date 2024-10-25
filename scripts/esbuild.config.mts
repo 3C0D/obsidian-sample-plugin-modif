@@ -82,55 +82,55 @@ function getBuildConfig(): BuildConfig {
 }
 
 async function createBuildContext(config: BuildConfig, isProd: boolean, entryPoints: string[]) {
-    return await esbuild.context({
-        banner: { js: BANNER },
-        minify: isProd,
-        entryPoints,
-        bundle: true,
-        external: EXTERNAL_DEPS,
-        format: "cjs",
-        target: "es2021",
-        logLevel: "info",
-        sourcemap: isProd ? false : "inline",
-        treeShaking: true,
-        outdir: config.outdir,
-        outbase: "./src",
-    });
+	return await esbuild.context({
+		banner: { js: BANNER },
+		minify: isProd,
+		entryPoints,
+		bundle: true,
+		external: EXTERNAL_DEPS,
+		format: "esm",
+		target: "es2021",
+		logLevel: "info",
+		sourcemap: isProd ? false : "inline",
+		treeShaking: true,
+		outdir: config.outdir,
+		outbase: "./src",
+	});
 }
 
 async function main() {
-    try {
-        await validateEnvironment();
-        
-        const entryPoints = await setupStyles();
-        const isProd = process.argv[2] === "production";
-        const buildConfig = getBuildConfig();
-        
-        console.log("Build configuration:", buildConfig);
-        console.log("Entry points:", entryPoints);
-        
-        const context = await createBuildContext(buildConfig, isProd, entryPoints);
-        
-        if (isProd) {
-            if (buildConfig.REAL === "1") {
-                await copyFilesToTargetDir(buildConfig.outdir, manifest.id);
-            }
-            
-            await context.rebuild();
-            
-            if (buildConfig.REAL === "1") {
-                console.log("Successfully installed in the real vault");
-            }
-            
-            process.exit(0);
-        } else {
-            await copyFilesToTargetDir(buildConfig.outdir, manifest.id);
-            await context.watch();
-        }
-    } catch (error) {
-        console.error("Build failed:", error);
-        process.exit(1);
-    }
+	try {
+		await validateEnvironment();
+
+		const entryPoints = await setupStyles();
+		const isProd = process.argv[2] === "production";
+		const buildConfig = getBuildConfig();
+
+		console.log("Build configuration:", buildConfig);
+		console.log("Entry points:", entryPoints);
+
+		const context = await createBuildContext(buildConfig, isProd, entryPoints);
+
+		if (isProd) {
+			if (buildConfig.REAL === "1") {
+				await copyFilesToTargetDir(buildConfig.outdir, manifest.id);
+			}
+
+			await context.rebuild();
+
+			if (buildConfig.REAL === "1") {
+				console.log("Successfully installed in the real vault");
+			}
+
+			process.exit(0);
+		} else {
+			await copyFilesToTargetDir(buildConfig.outdir, manifest.id);
+			await context.watch();
+		}
+	} catch (error) {
+		console.error("Build failed:", error);
+		process.exit(1);
+	}
 }
 
 main().catch(console.error);
