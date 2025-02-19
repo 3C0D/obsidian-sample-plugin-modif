@@ -2,7 +2,7 @@
 
 ## Development
 
-This plugin uses a template that automates the development and publication processes on GitHub, including releases. You can develop either inside or outside your Obsidian vault.
+Now working with yarn. This plugin uses a template that automates the development and publication processes on GitHub, including releases. You can develop either inside or outside your Obsidian vault.
 
 ### Environment Setup
 
@@ -16,7 +16,7 @@ This plugin uses a template that automates the development and publication proce
 #### Development Options
 1. **Inside the vault's plugins folder:**
    - Delete the `.env` file
-   - Run npm commands as usual
+   - Run npm commands as usual, except yarn install. Or rather use yarn to run them.
 
 2. **Outside the vault:**
    - Set the paths in the `.env` file:
@@ -26,21 +26,21 @@ This plugin uses a template that automates the development and publication proce
 
 ### Available Commands
 
-- `npm run start`: Opens VS Code, runs `npm install`, then `npm run dev`
-- `npm run dev`: For development
-- `npm run build`: Builds the project
-- `npm run real`: Simulates a traditional plugin installation in your REAL vault
-- `npm run bacp`: Builds, adds, commits, and pushes (prompts for commit message)
-- `npm run acp`: Adds, commits, and pushes (without building)
-- `npm run version`: Updates version, modifies relevant files, then adds, commits, and pushes
-- `npm run release`: Creates a GitHub release (prompts for release title, can be multiline using `\n`)
+- `yarn run start`: Opens VS Code, runs `yarn install`, then `yarn run dev`
+- `yarn run dev`: For development
+- `yarn run build`: Builds the project
+- `yarn run real`: Simulates a traditional plugin installation in your REAL vault
+- `yarn run bacp`: Builds, adds, commits, and pushes (prompts for commit message)
+- `yarn run acp`: Adds, commits, and pushes (without building)
+- `yarn run version`: Updates version, modifies relevant files, then adds, commits, and pushes
+- `yarn run release`: Creates a GitHub release (prompts for release title, can be multiline using `\n`)
 
 ### Recommended Workflow
 
-1. `npm run start`
-2. `npm run bacp`
-3. `npm run version`
-4. `npm run release`
+1. `yarn run start`
+2. `yarn run bacp`
+3. `yarn run version`
+4. `yarn run release`
 
 ### Additional Features
 

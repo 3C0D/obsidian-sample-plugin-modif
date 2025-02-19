@@ -1,7 +1,7 @@
 import { readFile, writeFile } from "fs/promises";
 import dedent from 'dedent';
 import * as semver from 'semver';
-import { askQuestion, createReadlineInterface, gitExec } from './utils.mts';
+import { askQuestion, createReadlineInterface, gitExec } from './utils';
 
 const rl = createReadlineInterface();
 
@@ -14,7 +14,7 @@ async function getTargetVersion(currentVersion: string): Promise<string> {
             major(2.0.0) -> type 3 or maj
             or version number (e.g. 2.0.0)
         Enter choice: `, rl);
-        
+
     switch (updateType.trim()) {
         case 'p':
         case '1':

@@ -4,7 +4,7 @@ import builtins from "builtin-modules";
 import { config } from 'dotenv';
 import path from "path";
 import manifest from "../manifest.json" assert { type: "json" };
-import { copyFilesToTargetDir, isValidPath, copyFile } from "./utils.mts";
+import { copyFilesToTargetDir, isValidPath, copyFile } from "./utils";
 
 config();
 
@@ -88,7 +88,7 @@ async function createBuildContext(config: BuildConfig, isProd: boolean, entryPoi
 		entryPoints,
 		bundle: true,
 		external: EXTERNAL_DEPS,
-		format: "esm",
+		format: "cjs",
 		target: "es2021",
 		logLevel: "info",
 		sourcemap: isProd ? false : "inline",

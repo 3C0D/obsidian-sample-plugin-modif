@@ -6,13 +6,13 @@
 	"type": "module",
 	"scripts": {
 		"start": "yarn install && cross-env REAL=0 node scripts/open-editor.mjs && yarn dev",
-		"dev": "cross-env REAL=0 tsx scripts/esbuild.config.mts",
-		"build": "tsc -noEmit -skipLibCheck && tsx scripts/esbuild.config.mts production",
+		"dev": "cross-env REAL=0 tsx scripts/esbuild.config.ts",
+		"build": "tsc -noEmit -skipLibCheck && tsx scripts/esbuild.config.ts production",
 		"real": "cross-env REAL=1 yarn build",
-		"acp": "tsx scripts/acp.mts",
-		"bacp": "tsx scripts/acp.mts -b",
-		"version": "tsx scripts/update-version.mts",
-		"release": "tsx scripts/release.mts"
+		"acp": "tsx scripts/acp.ts",
+		"bacp": "tsx scripts/acp.ts -b",
+		"version": "tsx scripts/update-version.ts",
+		"release": "tsx scripts/release.ts"
 	},
 	"keywords": [],
 	"author": "3C0D",

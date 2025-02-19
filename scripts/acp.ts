@@ -1,5 +1,5 @@
 import { execSync } from 'child_process';
-import { askQuestion, cleanInput, createReadlineInterface, gitExec } from './utils.mts';
+import { askQuestion, cleanInput, createReadlineInterface, gitExec } from './utils';
 
 const rl = createReadlineInterface();
 
