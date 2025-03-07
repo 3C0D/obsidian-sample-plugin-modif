@@ -1,45 +1,49 @@
-import { App, Plugin, PluginSettingTab, Setting } from 'obsidian';
+import { App,
+  Plugin,
+  PluginSettingTab,
+  Setting } from "obsidian";
 
 // Remember to rename these classes and interfaces
 
 interface MyPluginSettings {
-	mySetting: string;
+  mySetting: string;
 }
 
 const DEFAULT_SETTINGS: MyPluginSettings = {
-	mySetting: 'default'
-}
+  mySetting: "default"
+};
 
 export default class MyPlugin extends Plugin {
-	settings: MyPluginSettings;
+  settings: MyPluginSettings;
 
-	async onload() {
-		await this.loadSettings();
-		this.addSettingTab(new SampleSettingTab(this.app, this));
-	}
+  async onload() {
+    console.log("loading plugin");
+    await this.loadSettings();
+    this.addSettingTab(new SampleSettingTab(this.app, this));
+  }
 
-	async loadSettings() {
-		this.settings = Object.assign({}, DEFAULT_SETTINGS, await this.loadData());
-	}
+  async loadSettings() {
+    this.settings = Object.assign({}, DEFAULT_SETTINGS, await this.loadData());
+  }
 
-	async saveSettings() {
-		await this.saveData(this.settings);
-	}
+  async saveSettings() {
+    await this.saveData(this.settings);
+  }
 }
 
 class SampleSettingTab extends PluginSettingTab {
-	plugin: MyPlugin;
+  plugin: MyPlugin;
 
-	constructor(app: App, plugin: MyPlugin) {
-		super(app, plugin);
-		this.plugin = plugin;
-	}
+  constructor(app: App, plugin: MyPlugin) {
+    super(app, plugin);
+    this.plugin = plugin;
+  }
 
-	display(): void {
-		const {containerEl} = this;
+  display(): void {
+    const {containerEl} = this;
 
-		containerEl.empty();
+    containerEl.empty();
 
-		new Setting(containerEl)
-	}
+    new Setting(containerEl);
+  }
 }

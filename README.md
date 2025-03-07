@@ -26,21 +26,21 @@ Now working with yarn. This plugin uses a template that automates the developmen
 
 ### Available Commands
 
-- `yarn run start`: Opens VS Code, runs `yarn install`, then `yarn run dev`
-- `yarn run dev`: For development
-- `yarn run build`: Builds the project
-- `yarn run real`: Simulates a traditional plugin installation in your REAL vault
-- `yarn run bacp`: Builds, adds, commits, and pushes (prompts for commit message)
-- `yarn run acp`: Adds, commits, and pushes (without building)
-- `yarn run version`: Updates version, modifies relevant files, then adds, commits, and pushes
-- `yarn run release`: Creates a GitHub release (prompts for release title, can be multiline using `\n`)
+- `yarn start`: Opens VS Code, runs `yarn install`, then `yarn dev`
+- `yarn dev`: For development
+- `yarn build`: Builds the project
+- `yarn real`: Simulates a traditional plugin installation in your REAL vault
+- `yarn bacp`: Builds, adds, commits, and pushes (prompts for commit message)
+- `yarn acp`: Adds, commits, and pushes (without building)
+- `yarn version`: Updates version, modifies relevant files, then adds, commits, and pushes
+- `yarn release`: Creates a GitHub release (prompts for release title, can be multiline using `\n`)
 
 ### Recommended Workflow
 
-1. `yarn run start`
-2. `yarn run bacp`
-3. `yarn run version`
-4. `yarn run release`
+1. `yarn start`
+2. `yarn bacp`
+3. `yarn version`
+4. `yarn release`
 
 ### Additional Features
 
