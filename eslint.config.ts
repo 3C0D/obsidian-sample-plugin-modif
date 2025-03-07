@@ -1,4 +1,3 @@
-// eslint-disable-next-line import/no-namespace
 import * as typescriptEslintParser from "@typescript-eslint/parser";
 import typescriptEslintPlugin from "@typescript-eslint/eslint-plugin";
 import "eslint-import-resolver-typescript";
@@ -18,7 +17,8 @@ const configs: Linter.Config[] = [
       parser: typescriptEslintParser,
       sourceType: "module",
       parserOptions: {
-        project: "./tsconfig.json"
+        project: "./tsconfig.json",
+        ecmaVersion: 2023
       }
     },
     plugins: {

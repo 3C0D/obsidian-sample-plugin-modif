@@ -34,6 +34,8 @@ Now working with yarn. This plugin uses a template that automates the developmen
 - `yarn acp`: Adds, commits, and pushes (without building)
 - `yarn version`: Updates version, modifies relevant files, then adds, commits, and pushes
 - `yarn release`: Creates a GitHub release (prompts for release title, can be multiline using `\n`)
+- `yarn lint`: Lints the project
+- `yarn lint:fix`: Fixes linting issues
 
 ### Recommended Workflow
 

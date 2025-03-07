@@ -35,7 +35,7 @@ async function handleExistingTag(tag: string): Promise<boolean> {
   return true;
 }
 
-async function createTag() {
+async function createTag(): Promise<void> {
   const currentVersion = process.env.npm_package_version;
   const tag = `${currentVersion}`;
 
@@ -51,14 +51,14 @@ async function createTag() {
 
 
 
-async function doCommit(currentVersion: string | undefined, tag: string) {
+async function doCommit(currentVersion: string | undefined, tag: string): Promise<void> {
   rl.question(`Enter the commit message for version ${currentVersion}: `, async (message) => {
     doNextSteps(message, tag);
     rl.close();
   });
 }
 
-async function doNextSteps(message: string, tag: string) {
+async function doNextSteps(message: string, tag: string): Promise<void> {
   const messages = message.split("\\n");
   const toShow = message.replace(/\\n/g, "\n");
   await createReleaseNotesFile(toShow, tag);

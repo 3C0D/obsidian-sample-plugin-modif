@@ -16,17 +16,17 @@ const DEFAULT_SETTINGS: MyPluginSettings = {
 export default class MyPlugin extends Plugin {
   settings: MyPluginSettings;
 
-  async onload() {
+  async onload(): Promise<void> {
     console.log("loading plugin");
     await this.loadSettings();
     this.addSettingTab(new SampleSettingTab(this.app, this));
   }
 
-  async loadSettings() {
+  async loadSettings(): Promise<void> {
     this.settings = Object.assign({}, DEFAULT_SETTINGS, await this.loadData());
   }
 
-  async saveSettings() {
+  async saveSettings(): Promise<void> {
     await this.saveData(this.settings);
   }
 }

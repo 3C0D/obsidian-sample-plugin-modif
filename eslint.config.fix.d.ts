@@ -1,7 +1,7 @@
 declare module "@typescript-eslint/eslint-plugin" {
   import type {
-    ESLint,
-    Linter
+    ESLint
+    // Linter supprimé car non utilisé
   } from "eslint";
 
   const plugin: ESLint.Plugin & {

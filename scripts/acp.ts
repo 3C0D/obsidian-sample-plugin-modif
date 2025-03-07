@@ -21,7 +21,7 @@ async function main(): Promise<void> {
     try {
       gitExec("git add -A");
       gitExec(`git commit -m "${cleanedInput}"`);
-    } catch (commitError) {
+    } catch {
       console.log("Commit already exists or failed.");
       return;
     }
@@ -32,7 +32,7 @@ async function main(): Promise<void> {
     try {
       gitExec(`git push origin ${currentBranch}`);
       console.log("Commit and push successful.");
-    } catch (pushError) {
+    } catch {
       // new branch
       console.log(`New branch detected. Setting upstream for ${currentBranch}...`);
       gitExec(`git push --set-upstream origin ${currentBranch}`);

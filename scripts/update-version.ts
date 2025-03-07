@@ -1,11 +1,7 @@
-import { readFile,
-  writeFile } from "fs/promises";
+import { readFile, writeFile } from "fs/promises";
 import dedent from "dedent";
-import { inc,
-  valid } from "semver";
-import { askQuestion,
-  createReadlineInterface,
-  gitExec } from "./utils";
+import { inc, valid } from "semver";
+import { askQuestion, createReadlineInterface, gitExec } from "./utils";
 
 const rl = createReadlineInterface();
 
@@ -77,7 +73,7 @@ async function updateVersion(): Promise<void> {
     try {
       gitExec("git add manifest.json package.json versions.json");
       gitExec(`git commit -m "Updated to version ${targetVersion}"`);
-    } catch (commitError) {
+    } catch {
       console.log("Commit already exists or failed.");
       return;
     }

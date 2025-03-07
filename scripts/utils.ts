@@ -79,13 +79,6 @@ export async function copyFilesToTargetDir(buildPath: string): Promise<void> {
     console.error(`Error copying CSS: ${error.message}`);
   }
 }
-//     try {
-//         await fs.copyFile(source, destination);
-//         console.log(message || 'File was copied successfully.');
-//     } catch (err) {
-//         console.error('Error copying file:', err);
-//     }
-// };
 
 export function gitExec(command: string): void {
   try {
