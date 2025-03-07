@@ -1,25 +1,27 @@
 # Plugin Development Template
 
-## Development
+## Introduction
 
-Now working with yarn. This plugin uses a template that automates the development and publication processes on GitHub, including releases. You can develop either inside or outside your Obsidian vault.
+This plugin uses a template that automates the development and publication processes on GitHub, including releases.  
+You can develop inside .obsidian>plugins folder or from another folder.  
+Important: if you develop from another folder, you need to fill the `.env` file with the paths to your vaults.
 
 ### Environment Setup
 
 #### File Structure
-- All source files must be in the `src` folder:
-  - `main.ts`
-  - `styles.css`
 
-> **Note:** If `styles.css` is accidentally placed in the root folder instead of `src`, it will be automatically moved to the correct location when running any development command. After building, a copy of `styles.css` will appear in the root folder as part of the normal release process.
+- `main.ts` must in the src folder
+- `styles.css` can be in the src folder or root folder
 
 #### Development Options
-1. **Inside the vault's plugins folder:**
-   - Delete the `.env` file
-   - Run npm commands as usual, except yarn install. Or rather use yarn to run them.
 
-2. **Outside the vault:**
-   - Set the paths in the `.env` file:
+0. **First install yarn:** `npm install -g yarn`
+
+1. **Inside the vault's plugins folder:**
+   - Delete the `.env` file or put empty paths.
+
+2. **From another folder:**
+   - Set the vault paths in the `.env` file:
      - `TestVault` for development
      - `RealVault` for production simulation
    - Necessary files will be automatically copied to the targeted vault
@@ -48,7 +50,7 @@ Now working with yarn. This plugin uses a template that automates the developmen
 
 - **obsidian-typings**: This template automatically includes obsidian-typings, providing access to additional types not present in the official API.
 
-### SASS Support
+### SASS Support (need to be reviewed)
 
 For SASS support, check out the `sass-ready` branch in the original template repository. 
 When you are using the template for this branch, you need to check use all branchs option. then after you clone your new plugin, there is a batch in the root folder to replace the master branch by sass-ready one. run this once

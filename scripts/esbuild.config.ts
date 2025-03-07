@@ -41,16 +41,29 @@ async function validateEnvironment(): Promise<void> {
 }
 
 function getBuildPath(isProd: boolean): string {
-  // If simple build or no paths provided
+  // If production build without redirection, return "./"
   if (isProd && !process.argv.includes("-r")) {
     return "./";
   }
-
-  const vaultPath = process.argv.includes("-r")
-    ? process.env.REAL_VAULT?.trim()
-    : process.env.TEST_VAULT?.trim();
-
-  return path.join(vaultPath ?? "./", ".obsidian", "plugins", manifest.id);
+  
+  // Determine which path to use
+  const envKey = process.argv.includes("-r") ? "REAL_VAULT" : "TEST_VAULT";
+  const vaultPath = process.env[envKey]?.trim();
+  
+  // If empty or undefined, we're already in the plugin folder
+  if (!vaultPath) {
+    return "./";
+  }
+  
+  // Check if the path already contains the plugins directory path
+  const pluginsPath = path.join(".obsidian", "plugins");
+  if (vaultPath.includes(pluginsPath)) {
+    // Just add the manifest id to complete the path
+    return path.join(vaultPath, manifest.id);
+  }
+  
+  // Otherwise, complete the full path
+  return path.join(vaultPath, ".obsidian", "plugins", manifest.id);
 }
 
 async function createBuildContext(buildPath: string, isProd: boolean, entryPoints: string[]): Promise<esbuild.BuildContext> {
