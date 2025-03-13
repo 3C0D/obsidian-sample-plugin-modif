@@ -117,8 +117,8 @@ async function main(): Promise<void> {
     console.log(buildPath === "./"
       ? "Building in initial folder"
       : `Building in ${buildPath}`);
-    const stylePath = await isValidPath("src/styles.css")? "src/styles.css" : "styles.css";	
-    const entryPoints = ["src/main.ts", stylePath];
+    const stylePath = await isValidPath("src/styles.css")? "src/styles.css" : await isValidPath("styles.css")? "styles.css" : "";	
+    const entryPoints = stylePath ? ["src/main.ts", stylePath] : ["src/main.ts"];
     const context = await createBuildContext(buildPath, isProd, entryPoints);
 
     if (isProd) {
