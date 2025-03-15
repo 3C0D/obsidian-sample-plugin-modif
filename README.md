@@ -44,7 +44,7 @@ Important: if you develop from another folder, you need to fill the `.env` file 
 1. `yarn start`
 2. `yarn bacp`
 3. `yarn v` (or `yarn update-version`)
-4. `yarn release`
+4. `yarn r` (or `yarn release`)
 
 ### Additional Features
 
