@@ -1,7 +1,7 @@
 {
 	"id": "sample-plugin-modif",
 	"name": "Sample Plugin Modif",
-	"version": "1.0.1",
+	"version": "1.0.0",
 	"minAppVersion": "1.8.9",
 	"description": "A sample plugin modified",
 	"author": "3C0D",
