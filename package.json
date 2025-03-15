@@ -1,6 +1,6 @@
 {
 	"name": "obsidian-sample-plugin-modif",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"description": "modified sample plugin",
 	"main": "main.js",
 	"type": "module",
