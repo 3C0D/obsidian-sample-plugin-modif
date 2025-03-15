@@ -34,7 +34,7 @@ Important: if you develop from another folder, you need to fill the `.env` file 
 - `yarn real`: Simulates a traditional plugin installation in your REAL vault
 - `yarn bacp`: Builds, adds, commits, and pushes (prompts for commit message)
 - `yarn acp`: Adds, commits, and pushes (without building)
-- `yarn version`: Updates version, modifies relevant files, then adds, commits, and pushes
+- `yarn v` or `yarn update-version`: Updates version, modifies relevant files, then adds, commits, and pushes
 - `yarn release`: Creates a GitHub release (prompts for release title, can be multiline using `\n`)
 - `yarn lint`: Lints the project
 - `yarn lint:fix`: Fixes linting issues
@@ -43,7 +43,7 @@ Important: if you develop from another folder, you need to fill the `.env` file 
 
 1. `yarn start`
 2. `yarn bacp`
-3. `yarn version`
+3. `yarn v` (or `yarn update-version`)
 4. `yarn release`
 
 ### Additional Features
