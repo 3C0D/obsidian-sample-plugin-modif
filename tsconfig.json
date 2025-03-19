@@ -1,8 +1,7 @@
 {
   "compilerOptions": {
-    "strict": false,
-    "noImplicitAny": false,
-    "strictNullChecks": true,
+    "strict": true,
+    "strictPropertyInitialization": false,
     "allowArbitraryExtensions": true,
     "allowImportingTsExtensions": true,
     "allowJs": true,
