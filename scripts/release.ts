@@ -3,7 +3,7 @@ import { writeFile,
 import { execSync } from "child_process";
 import dedent from "dedent";
 import { askQuestion,
-  createReadlineInterface } from "./utils";
+  createReadlineInterface } from "./utils.ts";
 
 const rl = createReadlineInterface();
 
@@ -68,7 +68,7 @@ async function doNextSteps(message: string, tag: string): Promise<void> {
     execSync(`git add ${body}`);
     execSync("git commit -m \"update tag description\"");
     execSync("git push");
-  } catch (error) {
+  } catch (error: any) {
     console.error("Error:", error.message);
   }
   try {

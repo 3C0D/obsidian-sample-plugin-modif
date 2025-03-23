@@ -2,7 +2,7 @@ import { execSync } from "child_process";
 import { askQuestion,
   cleanInput,
   createReadlineInterface,
-  gitExec } from "./utils";
+  gitExec } from "./utils.ts";
 
 const rl = createReadlineInterface();
 

@@ -1,7 +1,7 @@
 import { readFile, writeFile } from "fs/promises";
 import dedent from "dedent";
 import { inc, valid } from "semver";
-import { askQuestion, createReadlineInterface, gitExec } from "./utils";
+import { askQuestion, createReadlineInterface, gitExec } from "./utils.ts";
 
 const rl = createReadlineInterface();
 

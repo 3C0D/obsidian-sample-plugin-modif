@@ -1,7 +1,9 @@
-import { access,
+import {
+  access,
   mkdir,
   copyFile,
-  rm } from "fs/promises";
+  rm
+} from "fs/promises";
 import path from "path";
 import * as readline from "readline";
 import { execSync } from "child_process";
@@ -47,7 +49,7 @@ export async function copyFilesToTargetDir(buildPath: string): Promise<void> {
 
   try {
     await mkdir(buildPath);
-  } catch (error) {
+  } catch (error: any) {
     if (error.code !== "EEXIST") {
       console.error(`Error creating directory: ${error.message}`);
     }
@@ -56,7 +58,7 @@ export async function copyFilesToTargetDir(buildPath: string): Promise<void> {
   // Copy manifest
   try {
     await copyFile("./manifest.json", manifestDest);
-  } catch (error) {
+  } catch (error: any) {
     console.error(`Error copying manifest: ${error.message}`);
   }
 
@@ -75,7 +77,7 @@ export async function copyFilesToTargetDir(buildPath: string): Promise<void> {
     } else {
       return;
     }
-  } catch (error) {
+  } catch (error: any) {
     console.error(`Error copying CSS: ${error.message}`);
   }
 }
@@ -83,7 +85,7 @@ export async function copyFilesToTargetDir(buildPath: string): Promise<void> {
 export function gitExec(command: string): void {
   try {
     execSync(command, { stdio: "inherit" });
-  } catch (error) {
+  } catch (error: any) {
     console.error(`Error executing '${command}':`, error.message);
     throw error;
   }

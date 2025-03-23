@@ -4,6 +4,9 @@
 	"description": "modified sample plugin",
 	"main": "main.js",
 	"type": "module",
+	"overrides": {
+		"esbuild": "$esbuild"
+	  },
 	"scripts": {
 		"start": "yarn install && yarn dev",
 		"dev": "tsx scripts/esbuild.config.ts",
