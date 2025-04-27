@@ -54,3 +54,36 @@ Important: if you develop from another folder, you need to fill the `.env` file 
 
 For SASS support, check out the `sass-ready` branch in the original template repository. 
 When you are using the template for this branch, you need to check use all branchs option. then after you clone your new plugin, there is a batch in the root folder to replace the master branch by sass-ready one. run this once
+
+### Notes perso
+
+#### Type Definitions Synchronization
+
+To automatically install TypeScript type definitions for your dependencies:
+
+```bash
+# Installation globale
+npm install -g typesync
+
+# Dans votre projet
+typesync
+npm install
+```
+
+#### Git Aliases Alternative
+
+Instead of using npm/yarn commands that group multiple functions, you can directly create Git aliases:
+
+```bash
+# Add + Commit + Push
+git config --global alias.acp '!f() { git add -A && git commit -m "$@" && git push; }; f'
+
+# Build + Add + Commit + Push (for projects with build step)
+git config --global alias.bacp '!f() { npm run build && git add -A && git commit -m "$@" && git push; }; f'
+```
+
+Usage:
+```bash
+git acp "Your commit message"
+git bacp "Your commit message after build"
+```
