@@ -1,59 +1,59 @@
 import {
+  App,
   Plugin,
+  PluginSettingTab,
+  Setting,
   Notice
 } from "obsidian";
 import { GenericConfirmModal } from "./common/generic-confirm-modal.js";
-import { DEFAULT_SETTINGS } from "./settings.js";
-import type { PluginSettings } from "./settings.js";
-import { PluginSettingsTab } from "./settingsTab.js";
+
+// Remember to rename these classes and interfaces
+
+interface MyPluginSettings {
+  mySetting: string;
+}
+
+const DEFAULT_SETTINGS: MyPluginSettings = {
+  mySetting: "default"
+};
 
 export default class MyPlugin extends Plugin {
-  settings: PluginSettings;
+  settings: MyPluginSettings;
 
   async onload(): Promise<void> {
     console.log("loading plugin");
     await this.loadSettings();
 
-    // Initialize features based on settings
-    this.initializeFeatures();
+    // Ajouter une commande pour tester le modal de confirmation
+    this.addCommand({
+      id: 'show-confirmation-modal',
+      name: 'Show Confirmation Modal',
+      callback: () => this.showConfirmationModal()
+    });
 
-    // Add settings tab
-    this.addSettingTab(new PluginSettingsTab(this.app, this));
+    this.addSettingTab(new SampleSettingTab(this.app, this));
   }
 
   /**
-   * Initialize plugin features based on settings
-   */
-  private initializeFeatures(): void {
-    // Add confirmation modal command if enabled
-    if (this.settings.enabledFeatures.confirmModal) {
-      this.addCommand({
-        id: 'show-confirmation-modal',
-        name: 'Show Confirmation Modal',
-        callback: () => this.showConfirmationModal()
-      });
-    }
-  }
-
-  /**
-   * Displays a confirmation modal using the configured settings
+   * Affiche un modal de confirmation pour tester la fonctionnalité
    */
   private showConfirmationModal(): void {
-    const config = this.settings.confirmModal;
-
     const modal = new GenericConfirmModal(
       this.app,
-      config.title,
-      config.messages,
-      config.confirmButtonText,
-      config.cancelButtonText,
+      "Confirmation requise",
+      [
+        "Êtes-vous sûr de vouloir effectuer cette action ?",
+        "Cette action ne peut pas être annulée."
+      ],
+      "Confirmer",
+      "Annuler",
       (confirmed: boolean) => {
         if (confirmed) {
-          new Notice(config.confirmNotice);
-          console.log("Action confirmed by user");
+          new Notice("Action confirmée !");
+          console.log("Action confirmée par l'utilisateur");
         } else {
-          new Notice(config.cancelNotice);
-          console.log("Action cancelled by user");
+          new Notice("Action annulée.");
+          console.log("Action annulée par l'utilisateur");
         }
       }
     );
@@ -70,4 +70,19 @@ export default class MyPlugin extends Plugin {
   }
 }
 
+class SampleSettingTab extends PluginSettingTab {
+  plugin: MyPlugin;
 
+  constructor(app: App, plugin: MyPlugin) {
+    super(app, plugin);
+    this.plugin = plugin;
+  }
+
+  display(): void {
+    const { containerEl } = this;
+
+    containerEl.empty();
+
+    new Setting(containerEl);
+  }
+}
