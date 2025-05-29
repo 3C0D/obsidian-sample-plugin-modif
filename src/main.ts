@@ -6,6 +6,8 @@ import {
   Notice
 } from "obsidian";
 import { GenericConfirmModal } from "./common/generic-confirm-modal.js";
+// Import from centralized configuration (simulated for demo)
+import { showCentralizedModal } from "./common/centralized-modal.js";
 
 // Remember to rename these classes and interfaces
 
@@ -24,11 +26,18 @@ export default class MyPlugin extends Plugin {
     console.log("loading plugin");
     await this.loadSettings();
 
-    // Ajouter une commande pour tester le modal de confirmation
+    // Ajouter une commande pour tester le modal de confirmation local
     this.addCommand({
       id: 'show-confirmation-modal',
-      name: 'Show Confirmation Modal',
+      name: 'Show Confirmation Modal (Local)',
       callback: () => this.showConfirmationModal()
+    });
+
+    // Ajouter une commande pour tester le modal de confirmation centralisé
+    this.addCommand({
+      id: 'show-centralized-modal',
+      name: 'Show Confirmation Modal (Centralized)',
+      callback: () => this.showCentralizedModal()
     });
 
     this.addSettingTab(new SampleSettingTab(this.app, this));
@@ -59,6 +68,24 @@ export default class MyPlugin extends Plugin {
     );
 
     modal.open();
+  }
+
+  /**
+   * Affiche un modal de confirmation depuis la configuration centralisée
+   */
+  private showCentralizedModal(): void {
+    showCentralizedModal(this.app, {
+      title: "Centralized Modal Test",
+      message: "This modal comes from the centralized configuration! Pretty cool, right?",
+      confirmText: "Awesome!",
+      cancelText: "Not bad",
+      onConfirm: () => {
+        new Notice("Centralized modal confirmed! 🎉");
+      },
+      onCancel: () => {
+        new Notice("Centralized modal cancelled 😢");
+      }
+    });
   }
 
   async loadSettings(): Promise<void> {
