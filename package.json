@@ -6,7 +6,7 @@
 	"type": "module",
 	"overrides": {
 		"esbuild": "$esbuild"
-	  },
+	},
 	"scripts": {
 		"start": "yarn install && yarn dev",
 		"dev": "tsx ../obsidian-plugin-config/scripts/esbuild.config.ts",
@@ -21,27 +21,36 @@
 		"lint": "eslint . --ext .ts",
 		"lint:fix": "eslint . --ext .ts --fix"
 	},
-	"keywords": [],
+	"keywords": [
+		"obsidian",
+		"obsidian-plugin",
+		"typescript",
+		"plugin-template",
+		"plugin-development",
+		"centralized-architecture",
+		"automation",
+		"productivity"
+	],
 	"author": "3C0D",
 	"license": "MIT",
+	"engines": {
+		"npm": "please-use-yarn",
+		"yarn": ">=1.22.0"
+	},
 	"devDependencies": {
 		"@types/eslint": "latest",
-		"@types/fs-extra": "^11.0.4",
 		"@types/node": "latest",
-		"@types/semver": "^7.5.8",
 		"@typescript-eslint/eslint-plugin": "latest",
 		"@typescript-eslint/parser": "latest",
-		"builtin-modules": "3.3.0",
-		"dedent": "^1.5.1",
-		"dotenv": "^16.4.5",
-		"esbuild": "latest",
+		"builtin-modules": "^5.0.0",
 		"eslint": "latest",
-		"fs-extra": "^11.2.0",
 		"obsidian": "latest",
-		"obsidian-typings": "latest",
-		"semver": "^7.6.0",
 		"tslib": "2.4.0",
-		"tsx": "^4.19.3",
-		"typescript": "^5.8.2"
+		"tsx": "^4.19.4",
+		"typescript": "^5.8.3",
+		"obsidian-typings": "latest"
+	},
+	"dependencies": {
+		"obsidian-plugin-config": "file:../obsidian-plugin-config"
 	}
 }

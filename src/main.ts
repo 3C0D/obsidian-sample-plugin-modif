@@ -8,6 +8,8 @@ import {
 import { GenericConfirmModal } from "./common/generic-confirm-modal.js";
 // Import from centralized configuration (simulated for demo)
 import { showCentralizedModal } from "./common/centralized-modal.js";
+// Import centralized tools
+import { showTestMessage, getRandomEmoji } from "obsidian-plugin-config/tools";
 
 // Remember to rename these classes and interfaces
 
@@ -38,6 +40,17 @@ export default class MyPlugin extends Plugin {
       id: 'show-centralized-modal',
       name: 'Show Confirmation Modal (Centralized)',
       callback: () => this.showCentralizedModal()
+    });
+
+    // Test centralized tools
+    this.addCommand({
+      id: 'test-centralized-tools',
+      name: 'Test Centralized Tools',
+      callback: () => {
+        const message = showTestMessage();
+        const emoji = getRandomEmoji();
+        new Notice(`${emoji} ${message}`);
+      }
     });
 
     this.addSettingTab(new SampleSettingTab(this.app, this));

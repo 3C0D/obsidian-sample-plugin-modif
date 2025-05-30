@@ -17,7 +17,7 @@
     ],
     "isolatedModules": true,
     "module": "NodeNext",
-    "moduleResolution": "nodenext",
+    "moduleResolution": "Nodenext",
     "resolveJsonModule": true,
     "noEmit": true,
     // already false in npm run build. And true in npm run dev
@@ -27,7 +27,8 @@
       "node",
       "obsidian-typings"
     ],
-    "verbatimModuleSyntax": true,
+    // can cause problems with esModuleInterop      
+    // "verbatimModuleSyntax": true,
     // Path aliases for centralized configuration
     "paths": {
       "@config/*": [
