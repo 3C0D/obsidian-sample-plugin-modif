@@ -1,56 +1,55 @@
 {
-	"name": "obsidian-sample-plugin-modif",
-	"version": "1.0.0",
-	"description": "modified sample plugin",
-	"main": "main.js",
-	"type": "module",
-	"overrides": {
-		"esbuild": "$esbuild"
-	},
-	"scripts": {
-		"start": "yarn install && yarn dev",
-		"dev": "tsx ../obsidian-plugin-config/scripts/esbuild.config.ts",
-		"build": "tsc -noEmit -skipLibCheck && tsx ../obsidian-plugin-config/scripts/esbuild.config.ts production",
-		"real": "tsx ../obsidian-plugin-config/scripts/esbuild.config.ts production -r",
-		"acp": "tsx ../obsidian-plugin-config/scripts/acp.ts",
-		"bacp": "tsx ../obsidian-plugin-config/scripts/acp.ts -b",
-		"update-version": "tsx ../obsidian-plugin-config/scripts/update-version.ts",
-		"v": "tsx ../obsidian-plugin-config/scripts/update-version.ts",
-		"release": "tsx ../obsidian-plugin-config/scripts/release.ts",
-		"r": "tsx ../obsidian-plugin-config/scripts/release.ts",
-		"lint": "eslint . --ext .ts",
-		"lint:fix": "eslint . --ext .ts --fix"
-	},
-	"keywords": [
-		"obsidian",
-		"obsidian-plugin",
-		"typescript",
-		"plugin-template",
-		"plugin-development",
-		"centralized-architecture",
-		"automation",
-		"productivity"
-	],
-	"author": "3C0D",
-	"license": "MIT",
-	"engines": {
-		"npm": "please-use-yarn",
-		"yarn": ">=1.22.0"
-	},
-	"devDependencies": {
-		"@types/eslint": "latest",
-		"@types/node": "latest",
-		"@typescript-eslint/eslint-plugin": "latest",
-		"@typescript-eslint/parser": "latest",
-		"builtin-modules": "^5.0.0",
-		"eslint": "latest",
-		"obsidian": "latest",
-		"tslib": "2.4.0",
-		"tsx": "^4.19.4",
-		"typescript": "^5.8.3",
-		"obsidian-typings": "latest"
-	},
-	"dependencies": {
-		"obsidian-plugin-config": "file:../obsidian-plugin-config"
-	}
+  "name": "obsidian-sample-plugin-modif",
+  "version": "1.0.0",
+  "description": "modified sample plugin",
+  "main": "main.js",
+  "type": "module",
+  "overrides": {
+    "esbuild": "$esbuild"
+  },
+  "scripts": {
+    "start": "yarn install && yarn dev",
+    "dev": "tsx ../obsidian-plugin-config/scripts/esbuild.config.ts",
+    "build": "tsc -noEmit -skipLibCheck && tsx ../obsidian-plugin-config/scripts/esbuild.config.ts production",
+    "real": "tsx ../obsidian-plugin-config/scripts/esbuild.config.ts production real",
+    "acp": "tsx ../obsidian-plugin-config/scripts/acp.ts",
+    "bacp": "tsx ../obsidian-plugin-config/scripts/acp.ts -b",
+    "update-version": "tsx ../obsidian-plugin-config/scripts/update-version.ts",
+    "v": "tsx ../obsidian-plugin-config/scripts/update-version.ts",
+    "release": "tsx ../obsidian-plugin-config/scripts/release.ts",
+    "r": "tsx ../obsidian-plugin-config/scripts/release.ts",
+    "help": "tsx ../obsidian-plugin-config/templates/help-plugin.ts",
+    "h": "tsx ../obsidian-plugin-config/templates/help-plugin.ts"
+  },
+  "keywords": [
+    "obsidian",
+    "obsidian-plugin",
+    "typescript",
+    "plugin-template",
+    "plugin-development",
+    "centralized-architecture",
+    "automation",
+    "productivity"
+  ],
+  "author": "3C0D",
+  "license": "MIT",
+  "engines": {
+    "npm": "please-use-yarn",
+    "yarn": ">=1.22.0"
+  },
+  "devDependencies": {
+    "@types/eslint": "latest",
+    "@types/node": "^16.11.6",
+    "@typescript-eslint/eslint-plugin": "latest",
+    "@typescript-eslint/parser": "latest",
+    "eslint": "latest",
+    "obsidian": "latest",
+    "tslib": "2.4.0",
+    "typescript": "^5.8.2",
+    "obsidian-typings": "latest",
+    "tsx": "^4.19.4"
+  },
+  "dependencies": {
+    "obsidian-plugin-config": "file:../obsidian-plugin-config"
+  }
 }
