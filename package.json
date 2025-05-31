@@ -1,58 +1,60 @@
 {
-	"name": "obsidian-sample-plugin-modif",
-	"version": "1.0.1",
-	"description": "modified sample plugin",
-	"main": "main.js",
-	"type": "module",
-	"overrides": {
-		"esbuild": "$esbuild"
-	},
-	"scripts": {
-		"start": "yarn install && yarn dev",
-		"dev": "tsx scripts/esbuild.config.ts",
-		"build": "tsc -noEmit -skipLibCheck && tsx scripts/esbuild.config.ts production",
-		"real": "tsx scripts/esbuild.config.ts production real",
-		"acp": "tsx scripts/acp.ts",
-		"bacp": "tsx scripts/acp.ts -b",
-		"update-version": "tsx scripts/update-version.ts",
-		"v": "tsx scripts/update-version.ts",
-		"release": "tsx scripts/release.ts",
-		"r": "tsx scripts/release.ts",
-		"help": "tsx scripts/help.ts",
-		"h": "tsx scripts/help.ts"
-	},
-	"keywords": [
-		"obsidian",
-		"obsidian-plugin",
-		"typescript",
-		"plugin-template",
-		"plugin-development",
-		"centralized-architecture",
-		"automation",
-		"productivity"
-	],
-	"author": "3C0D",
-	"license": "MIT",
-	"engines": {
-		"npm": "please-use-yarn",
-		"yarn": ">=1.22.0"
-	},
-	"devDependencies": {
-		"@types/eslint": "latest",
-		"@types/node": "^16.11.6",
-		"@typescript-eslint/eslint-plugin": "latest",
-		"@typescript-eslint/parser": "latest",
-		"eslint": "latest",
-		"obsidian": "latest",
-		"tslib": "2.4.0",
-		"typescript": "^5.8.2",
-		"obsidian-typings": "latest",
-		"tsx": "^4.19.4",
-		"esbuild": "^0.24.0",
-		"dedent": "^1.5.3",
-		"semver": "^7.6.3",
-		"@types/semver": "^7.5.8",
-		"dotenv": "^16.4.5",
-		"builtin-modules": "^4.0.0"
-	}
+  "name": "obsidian-sample-plugin-modif",
+  "version": "1.0.0",
+  "description": "Template Obsidian plugin modifié avec scripts intégrés",
+  "type": "module",
+  "main": "src/index.ts",
+  "license": "MIT",
+  "keywords": [
+    "obsidian",
+    "obsidian-plugin",
+    "typescript",
+    "injection",
+    "autonomous",
+    "cli",
+    "development-tools",
+    "plugin-utilities"
+  ],
+  "scripts": {
+    "start": "yarn install && yarn dev",
+    "dev": "tsx scripts/esbuild.config.ts",
+    "build": "tsc -noEmit -skipLibCheck && tsx scripts/esbuild.config.ts production",
+    "real": "tsx scripts/esbuild.config.ts production real",
+    "acp": "tsx scripts/acp.ts",
+    "bacp": "tsx scripts/acp.ts -b",
+    "update-version": "tsx scripts/update-version.ts",
+    "v": "tsx scripts/update-version.ts",
+    "release": "tsx scripts/release.ts",
+    "r": "tsx scripts/release.ts",
+    "help": "tsx scripts/help.ts",
+    "h": "tsx scripts/help.ts"
+  },
+  "devDependencies": {
+    "@types/node": "^22.15.26",
+    "@types/semver": "^7.7.0",
+    "builtin-modules": "3.3.0",
+    "dedent": "^1.6.0",
+    "dotenv": "^16.4.5",
+    "esbuild": "latest",
+    "fs-extra": "^11.2.0",
+    "obsidian": "*",
+    "obsidian-typings": "^3.9.5",
+    "semver": "^7.7.2",
+    "tsx": "^4.19.4",
+    "typescript": "^5.8.2"
+  },
+  "dependencies": {
+    "@types/lodash": "^4.17.17",
+    "lodash": "^4.17.21"
+  },
+  "engines": {
+    "npm": "please-use-yarn",
+    "yarn": ">=1.22.0",
+    "node": ">=16.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/3C0D/obsidian-plugin-config.git"
+  },
+  "author": "3C0D"
 }

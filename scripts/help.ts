@@ -1,37 +1,29 @@
 #!/usr/bin/env tsx
 
 console.log(`
-Obsidian Plugin Development - Command Reference
-(Autonomous plugin with local scripts)
+Obsidian Plugin Config - Command Reference
+(Run these commands from obsidian-plugin-config directory)
 
-DEVELOPMENT:
-  yarn start                       Install dependencies and start development
-  yarn dev                         Build in development mode with hot reload
-  yarn build                       Build for production
-  yarn real                        Build and install in real Obsidian vault
+MIGRATION:
+  yarn migrate, m <path>           Migrate plugin to centralized architecture
+  yarn migrate --dry-run           Preview changes without applying (debugging)
+  yarn migrate -i, --interactive   Interactive plugin selection
 
-VERSION MANAGEMENT:
-  yarn update-version, v           Update plugin version in package.json and manifest.json
-  yarn release, r                  Create release with automated changelog
-
-GIT OPERATIONS:
-  yarn acp                         Add, commit, and push changes
-  yarn bacp                        Build + add, commit, and push
+MAINTENANCE:
+  yarn start                       Install dependencies and update exports
+  yarn acp                         Add, commit, and push changes (with exports update)
+  yarn acp -ne, --no-exports       Add, commit, and push without updating exports
+  yarn update-version, v           Update version in centralized config
+  yarn help, h                     Show this help
 
 USAGE EXAMPLES:
-  yarn start                       # First time setup
-  yarn dev                         # Daily development
-  yarn real                        # Build and test in real vault
-  yarn update-version              # Update version before release
-  yarn release                     # Publish new version
+  yarn migrate "C:\\Users\\dev\\plugins\\my-plugin"
+  yarn migrate ../existing-plugin --dry-run
+  yarn m -i                        # Short interactive mode
 
-ENVIRONMENT:
-  - Edit .env file to set TEST_VAULT and REAL_VAULT paths
-  - All scripts are now local (autonomous plugin)
+PATH CONVENTIONS:
+  - Windows absolute paths: Use quotes "C:\\path\\to\\plugin"
+  - Relative paths: No quotes needed ../plugin-name
 
-AUTONOMOUS ARCHITECTURE:
-  - Scripts are local in ./scripts/ directory
-  - No dependency on external obsidian-plugin-config
-  - Can be updated via future injection system
-  - Self-contained and portable
+For detailed documentation: ARCHITECTURE-SUMMARY.md
 `);

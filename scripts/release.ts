@@ -56,6 +56,8 @@ async function createTag(): Promise<void> {
   await doCommit(currentVersion, tag);
 }
 
+
+
 async function doCommit(currentVersion: string | undefined, tag: string): Promise<void> {
   rl.question(`Enter the commit message for version ${currentVersion}: `, async (message) => {
     doNextSteps(message, tag);

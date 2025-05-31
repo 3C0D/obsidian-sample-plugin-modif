@@ -30,14 +30,6 @@
     // can cause problems with esModuleInterop      
     // "verbatimModuleSyntax": true,
     // Path aliases for centralized configuration
-    "paths": {
-      "@config/*": [
-        "../obsidian-plugin-config/src/*"
-      ],
-      "@config-scripts/*": [
-        "../obsidian-plugin-config/scripts/*"
-      ]
-    },
     // Uncomment the following options if you want to generate .d.ts declaration files.
     // This is useful if you're building a plugin that will be used as a dependency by other plugins.
     // "declaration": true,

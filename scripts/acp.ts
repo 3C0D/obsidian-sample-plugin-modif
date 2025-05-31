@@ -28,7 +28,6 @@ async function main(): Promise<void> {
     }
 
     // Only update exports if we're in the centralized repo and not explicitly disabled
-    // For local plugins, this will be skipped since we're not in obsidian-plugin-config
     if (!process.argv.includes("-ne") && !process.argv.includes("--no-exports") && isInCentralizedRepo()) {
       console.log("Updating exports...");
       gitExec("yarn run update-exports");
