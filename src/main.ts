@@ -8,8 +8,8 @@ import {
 import { GenericConfirmModal } from "./common/generic-confirm-modal.js";
 // Import from centralized configuration (simulated for demo)
 import { showCentralizedModal } from "./common/centralized-modal.js";
-// Import centralized tools
-import { showTestMessage, getRandomEmoji } from "obsidian-plugin-config/tools";
+// Import centralized tools - COMMENTED FOR AUTONOMOUS VERSION
+// import { showTestMessage, getRandomEmoji } from "obsidian-plugin-config/tools";
 
 // Remember to rename these classes and interfaces
 
@@ -42,7 +42,8 @@ export default class MyPlugin extends Plugin {
       callback: () => this.showCentralizedModal()
     });
 
-    // Test centralized tools
+    // Test centralized tools - COMMENTED FOR AUTONOMOUS VERSION
+    /*
     this.addCommand({
       id: 'test-centralized-tools',
       name: 'Test Centralized Tools',
@@ -52,6 +53,7 @@ export default class MyPlugin extends Plugin {
         new Notice(`${emoji} ${message}`);
       }
     });
+    */
 
     this.addSettingTab(new SampleSettingTab(this.app, this));
   }

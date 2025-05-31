@@ -27,6 +27,7 @@ scripts/
 ## 🚀 Quick Start
 
 ### Setup
+
 ```bash
 # Clone this repository
 git clone https://github.com/3C0D/obsidian-plugin-config.git
@@ -37,6 +38,7 @@ yarn start
 ```
 
 ### Using with Template
+
 ```bash
 # Clone the template in the same parent directory
 cd ..
@@ -51,9 +53,11 @@ yarn real  # Builds and installs to Obsidian
 ### Development Options
 
 **Inside the vault's plugins folder:**
+
 - Delete the `.env` file or put empty paths
 
 **From another folder:**
+
 - Set vault paths in `.env` file:
   - `TestVault` for development
   - `RealVault` for production simulation
@@ -62,6 +66,7 @@ yarn real  # Builds and installs to Obsidian
 ## 🛠️ Available Commands
 
 ### Development
+
 ```bash
 yarn start         # Bootstrap: install + dev mode (watch)
 yarn dev           # Build in development mode (watch)
@@ -70,6 +75,7 @@ yarn real          # Build + install in real Obsidian vault
 ```
 
 ### Version Control (Centralized Scripts)
+
 ```bash
 yarn acp           # Add-commit-push (from centralized config)
 yarn bacp          # Build + add-commit-push
@@ -78,6 +84,7 @@ yarn update-version # Version management (from centralized config)
 ```
 
 ### Code Quality
+
 ```bash
 yarn lint          # Lint the project
 ```
@@ -92,12 +99,15 @@ This template **prevents accidental npm usage** that would corrupt yarn.lock:
 - **Result**: `npm install` shows clear error instead of corrupting project
 
 ### VSCode Integration
+
 Project includes `.vscode/settings.json` that:
+
 - Forces yarn for package management
 - Disables auto-import suggestions that trigger npm
 - Provides consistent development experience across team
 
 **Tip:** Add these settings to your global VSCode config for all projects:
+
 ```json
 {
   "npm.packageManager": "yarn",
@@ -116,6 +126,7 @@ yarn lint:fix      # Fix linting issues
 ## 🏗️ Architecture
 
 ### Centralized Configuration
+
 This template uses the **obsidian-plugin-config** centralized architecture:
 
 - ✅ **Automatic dependency management** - All libraries installed transparently
@@ -124,6 +135,7 @@ This template uses the **obsidian-plugin-config** centralized architecture:
 - ✅ **Zero configuration** - You don't need to know internal dependencies
 
 ### How It Works
+
 ```
 Your Plugin (this template):
 ├── package.json          ← Declares "obsidian-plugin-config": "file:../..."
@@ -139,22 +151,23 @@ Centralized Config:
 ## 🧩 Using Centralized Components
 
 ### Generic Confirm Modal
+
 ```typescript
-import { GenericConfirmModal } from '@/obsidian-plugin-config/modals';
+import { GenericConfirmModal } from "@/obsidian-plugin-config/modals";
 
 // Simple usage
 new GenericConfirmModal(this.app, {
-    title: "Delete File",
-    message: "Are you sure you want to delete this file?",
-    confirmText: "Delete",
-    cancelText: "Cancel",
-    onConfirm: () => {
-        // Delete the file
-        console.log("File deleted");
-    },
-    onCancel: () => {
-        console.log("Cancelled");
-    }
+  title: "Delete File",
+  message: "Are you sure you want to delete this file?",
+  confirmText: "Delete",
+  cancelText: "Cancel",
+  onConfirm: () => {
+    // Delete the file
+    console.log("File deleted");
+  },
+  onCancel: () => {
+    console.log("Cancelled");
+  },
 }).open();
 ```
 
@@ -167,6 +180,7 @@ new GenericConfirmModal(this.app, {
 ## 🔧 Advanced Configuration
 
 ### Type Definitions Synchronization
+
 Dependencies are automatically managed, but if you need additional types:
 
 ```bash
@@ -179,6 +193,7 @@ yarn install
 ```
 
 ### Git Aliases (Optional)
+
 The template provides centralized scripts, but you can also use Git aliases:
 
 ```bash
@@ -190,16 +205,58 @@ git config --global alias.bacp '!f() { yarn build && git add -A && git commit -m
 ```
 
 Usage:
+
 ```bash
 git acp "Your commit message"
 git bacp "Your commit message after build"
 ```
+
+## ⚠️ Important: Development Setup
+
+### For External Development (Recommended)
+
+Clone both repositories in the same parent directory:
+
+```bash
+# Your development folder
+mkdir my-obsidian-plugins
+cd my-obsidian-plugins
+
+# Clone both repositories
+git clone https://github.com/3C0D/obsidian-plugin-config
+git clone https://github.com/3C0D/obsidian-sample-plugin-modif
+
+# Structure:
+# my-obsidian-plugins/
+# ├── obsidian-plugin-config/
+# └── obsidian-sample-plugin-modif/
+```
+
+### For In-Place Development (.obsidian/plugins)
+
+If you want to develop directly in `.obsidian/plugins`, you **must** also clone the config repository:
+
+```bash
+cd .obsidian/plugins
+
+# Clone BOTH repositories
+git clone https://github.com/3C0D/obsidian-plugin-config
+git clone https://github.com/3C0D/[your-plugin]
+
+# Structure:
+# .obsidian/plugins/
+# ├── obsidian-plugin-config/  ← Required!
+# └── your-plugin/
+```
+
+**Why?** The architecture uses `file:../obsidian-plugin-config` dependency, so the config repo must be accessible at that path.
 
 ## 🎯 Migration from Old Template
 
 If you're migrating from an older template:
 
 1. **Add centralized dependency:**
+
    ```json
    {
      "dependencies": {
@@ -209,6 +266,7 @@ If you're migrating from an older template:
    ```
 
 2. **Remove local scripts folder:**
+
    ```bash
    rm -rf scripts/
    ```

@@ -1,12 +1,16 @@
-import { NoticeHelper, SettingsHelper } from "obsidian-plugin-config/utils";
+// COMMENTED FOR AUTONOMOUS VERSION
+// import { NoticeHelper, SettingsHelper } from "obsidian-plugin-config/utils";
 import { App, Plugin, PluginSettingTab, Setting } from "obsidian";
 
 /**
  * Test file to demonstrate the new centralized utils
+ * DISABLED FOR AUTONOMOUS VERSION
  */
 export class TestUtilsCommand {
 
     static testNotices(): void {
+        console.log("Autonomous version - centralized utils disabled");
+        /*
         // Test different types of notices
         NoticeHelper.success("Operation completed successfully!");
 
@@ -49,15 +53,18 @@ export class TestUtilsCommand {
                 }
             }, 500);
         }, 6000);
+        */
     }
 
     static testCustomNotice(): void {
-        NoticeHelper.custom("🚀", "Custom notice with rocket emoji!");
+        console.log("Autonomous version - centralized utils disabled");
+        // NoticeHelper.custom("🚀", "Custom notice with rocket emoji!");
     }
 }
 
 /**
  * Example settings tab using the centralized SettingsHelper
+ * DISABLED FOR AUTONOMOUS VERSION
  */
 export class TestSettingsTab extends PluginSettingTab {
     plugin: Plugin;
@@ -71,13 +78,15 @@ export class TestSettingsTab extends PluginSettingTab {
         const { containerEl } = this;
         containerEl.empty();
 
+        console.log("Autonomous version - centralized SettingsHelper disabled");
+        /*
         // Create header
         SettingsHelper.createHeader(
             containerEl,
             "Test Settings",
             "These settings demonstrate the centralized SettingsHelper"
         );
-
+        
         // Test toggle setting
         SettingsHelper.createToggleSetting(
             containerEl,
@@ -88,7 +97,7 @@ export class TestSettingsTab extends PluginSettingTab {
                 NoticeHelper.info(`Feature ${value ? 'enabled' : 'disabled'}`);
             }
         );
-
+        
         // Test text setting
         SettingsHelper.createTextSetting(
             containerEl,
@@ -100,7 +109,7 @@ export class TestSettingsTab extends PluginSettingTab {
             },
             "sk-..."
         );
-
+        
         // Test dropdown setting
         SettingsHelper.createDropdownSetting(
             containerEl,
@@ -116,7 +125,7 @@ export class TestSettingsTab extends PluginSettingTab {
                 NoticeHelper.info(`Theme changed to: ${value}`);
             }
         );
-
+        
         // Test number setting
         SettingsHelper.createNumberSetting(
             containerEl,
@@ -130,7 +139,7 @@ export class TestSettingsTab extends PluginSettingTab {
             100,
             1
         );
-
+        
         // Test button setting
         SettingsHelper.createButtonSetting(
             containerEl,
@@ -141,14 +150,14 @@ export class TestSettingsTab extends PluginSettingTab {
                 TestUtilsCommand.testNotices();
             }
         );
-
+        
         // Test collapsible section
         const { container: advancedContainer } = SettingsHelper.createCollapsibleSection(
             containerEl,
             "Advanced Settings",
             false
         );
-
+        
         SettingsHelper.createTextSetting(
             advancedContainer,
             "Debug mode",
@@ -158,5 +167,6 @@ export class TestSettingsTab extends PluginSettingTab {
                 console.log("Debug mode:", value);
             }
         );
+        */
     }
 }
