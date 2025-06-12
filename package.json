@@ -1,6 +1,6 @@
 {
 	"name": "obsidian-sample-plugin-modif",
-	"version": "1.0.1",
+	"version": "1.1.0",
 	"description": "Template Obsidian plugin modifié avec scripts intégrés",
 	"type": "module",
 	"main": "src/index.ts",
