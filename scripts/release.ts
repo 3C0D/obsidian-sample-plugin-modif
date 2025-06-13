@@ -5,10 +5,10 @@ import {
 import { execSync } from "child_process";
 import dedent from "dedent";
 import {
-  askQuestion,
   askConfirmation,
-  createReadlineInterface
-} from "./utils.ts";
+  createReadlineInterface,
+  ensureGitSync
+} from "./utils.js";
 
 const rl = createReadlineInterface();
 
@@ -74,6 +74,10 @@ async function doNextSteps(message: string, tag: string): Promise<void> {
   try {
     execSync("git add -A");
     execSync("git commit -m \"update tag description\"");
+
+    // Ensure Git is synchronized before pushing
+    await ensureGitSync();
+
     execSync("git push");
   } catch (error: any) {
     console.error("Error:", error.message);
@@ -86,6 +90,9 @@ async function doNextSteps(message: string, tag: string): Promise<void> {
     console.log("Fixed");
     execSync(`git tag -a ${tag} ${tagMessage}`);
   }
+  // Ensure Git is synchronized before pushing tag
+  await ensureGitSync();
+
   execSync(`git push origin ${tag}`);
   console.log(`Release ${tag} pushed to repo.`);
   console.log(dedent`

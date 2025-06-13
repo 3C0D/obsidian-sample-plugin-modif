@@ -115,3 +115,29 @@ export function gitExec(command: string): void {
     throw error;
   }
 }
+
+/**
+ * Ensure Git repository is synchronized with remote before pushing
+ */
+export async function ensureGitSync(): Promise<void> {
+  try {
+    console.log("🔄 Checking Git synchronization...");
+
+    // Fetch latest changes from remote
+    execSync('git fetch origin', { stdio: 'pipe' });
+
+    // Check if branch is behind remote
+    const status = execSync('git status --porcelain -b', { encoding: 'utf8' });
+
+    if (status.includes('behind')) {
+      console.log('📥 Branch behind remote. Pulling changes...');
+      execSync('git pull', { stdio: 'inherit' });
+      console.log('✅ Successfully pulled remote changes');
+    } else {
+      console.log('✅ Repository is synchronized with remote');
+    }
+  } catch (error: any) {
+    console.error(`❌ Git sync failed: ${error.message}`);
+    throw error;
+  }
+}
