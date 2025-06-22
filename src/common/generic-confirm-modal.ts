@@ -20,16 +20,16 @@ export class GenericConfirmModal extends Modal {
         super(app);
     }
 
-    onOpen() {
+    onOpen(): void {
         const { contentEl } = this;
         contentEl.empty();
 
         // Set modal size for better readability
         this.modalEl.style.width = `500px`;
-        
+
         // Add title
         contentEl.createEl("h2", { text: this.title });
-        
+
         // Add messages
         for (const message of this.messages) {
             contentEl.createEl("p", { text: message });
@@ -53,7 +53,7 @@ export class GenericConfirmModal extends Modal {
                     }));
     }
 
-    onClose() {
+    onClose(): void {
         this.contentEl.empty();
     }
 }
