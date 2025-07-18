@@ -50,6 +50,33 @@ Cela met à jour :
 - Configuration package.json
 - Dépendances requises
 
+## Support SASS (Optionnel)
+
+Pour ajouter le support SASS/SCSS à votre plugin :
+
+```bash
+# Avec obsidian-plugin-config local
+cd ../obsidian-plugin-config
+yarn inject-sass ../votre-plugin --yes
+
+# Ou avec le package NPM global
+cd votre-plugin
+obsidian-inject --sass
+```
+
+**Ce que l'injection SASS ajoute :**
+
+- ✅ Dépendance `esbuild-sass-plugin`
+- ✅ Compilation automatique des fichiers `.scss`
+- ✅ Détection prioritaire : `src/styles.scss` > `src/styles.css` > `styles.css`
+- ✅ Nettoyage automatique du CSS généré
+
+**Utilisation :**
+
+1. Créer `src/styles.scss` au lieu de `styles.css`
+2. Utiliser les variables, mixins et fonctionnalités SASS
+3. Le build compile automatiquement vers CSS
+
 ## Architecture
 
 Plugin **autonome** avec scripts locaux dans `./scripts/` :

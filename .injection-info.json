@@ -1,5 +1,10 @@
 {
+<<<<<<< HEAD
   "injectorVersion": "1.1.14",
   "injectionDate": "2025-06-22T23:31:16.699Z",
+=======
+  "injectorVersion": "1.1.20",
+  "injectionDate": "2025-07-18T22:04:30.392Z",
+>>>>>>> d3b0131 (� Add SASS injection documentation and update README)
   "injectorName": "obsidian-plugin-config"
 }
