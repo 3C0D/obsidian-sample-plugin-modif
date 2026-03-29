@@ -173,7 +173,7 @@ async function createBuildContext(buildPath: string, isProd: boolean, entryPoint
     ...(hasSass ? [
       await (async () => {
         try {
-          // @ts-ignore - esbuild-sass-plugin is installed during injection
+          // @ts-expect-error - esbuild-sass-plugin is installed during injection
           const { sassPlugin } = await import('esbuild-sass-plugin');
           return sassPlugin({
             syntax: 'scss',

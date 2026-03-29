@@ -1,16 +1,15 @@
 // COMMENTED FOR AUTONOMOUS VERSION
 // import { NoticeHelper, SettingsHelper } from "obsidian-plugin-config/utils";
-import { App, Plugin, PluginSettingTab } from "obsidian";
+import { App, Plugin, PluginSettingTab } from 'obsidian';
 
 /**
  * Test file to demonstrate the new centralized utils
  * DISABLED FOR AUTONOMOUS VERSION
  */
 export class TestUtilsCommand {
-
-    static testNotices(): void {
-        console.log("Autonomous version - centralized utils disabled");
-        /*
+	static testNotices(): void {
+		console.log('Autonomous version - centralized utils disabled');
+		/*
         // Test different types of notices
         NoticeHelper.success("Operation completed successfully!");
 
@@ -54,12 +53,12 @@ export class TestUtilsCommand {
             }, 500);
         }, 6000);
         */
-    }
+	}
 
-    static testCustomNotice(): void {
-        console.log("Autonomous version - centralized utils disabled");
-        // NoticeHelper.custom("🚀", "Custom notice with rocket emoji!");
-    }
+	static testCustomNotice(): void {
+		console.log('Autonomous version - centralized utils disabled');
+		// NoticeHelper.custom("🚀", "Custom notice with rocket emoji!");
+	}
 }
 
 /**
@@ -67,19 +66,19 @@ export class TestUtilsCommand {
  * DISABLED FOR AUTONOMOUS VERSION
  */
 export class TestSettingsTab extends PluginSettingTab {
-    plugin: Plugin;
+	plugin: Plugin;
 
-    constructor(app: App, plugin: Plugin) {
-        super(app, plugin);
-        this.plugin = plugin;
-    }
+	constructor(app: App, plugin: Plugin) {
+		super(app, plugin);
+		this.plugin = plugin;
+	}
 
-    display(): void {
-        const { containerEl } = this;
-        containerEl.empty();
+	display(): void {
+		const { containerEl } = this;
+		containerEl.empty();
 
-        console.log("Autonomous version - centralized SettingsHelper disabled");
-        /*
+		console.log('Autonomous version - centralized SettingsHelper disabled');
+		/*
         // Create header
         SettingsHelper.createHeader(
             containerEl,
@@ -168,5 +167,5 @@ export class TestSettingsTab extends PluginSettingTab {
             }
         );
         */
-    }
+	}
 }
