@@ -1,6 +1,6 @@
 # Obsidian Sample Plugin (Modified)
 
-Plugin Obsidian autonome avec scripts intégrés et système de mise à jour.
+Self-contained Obsidian plugin with built-in scripts and update system.
 
 ## Installation
 
@@ -12,78 +12,78 @@ yarn install
 
 ## Configuration
 
-Créer un fichier `.env` avec vos chemins de vaults :
+Create a `.env` file with your vault paths:
 
 ```env
-TEST_VAULT=C:\chemin\vers\vault\test
-REAL_VAULT=C:\chemin\vers\vault\reel
+TEST_VAULT=C:\path\to\test\vault
+REAL_VAULT=C:\path\to\real\vault
 ```
 
-## Commandes
+## Commands
 
 ```bash
-yarn start      # Développement avec hot reload
-yarn build      # Build production
-yarn real       # Build + installation vault réel
+yarn start      # Development with hot reload
+yarn build      # Production build
+yarn real       # Build + install real vault
 yarn acp        # Add-commit-push Git
 yarn bacp       # Build + add-commit-push
-yarn v          # Mise à jour version
-yarn h          # Aide
+yarn v          # Update version
+yarn h          # Help
 ```
 
-## Mise à jour via obsidian-plugin-config
+## Update via obsidian-plugin-config
 
-Ce plugin peut être mis à jour automatiquement :
+This plugin can be automatically updated:
 
 ```bash
-# Installation globale (une seule fois)
+# Global installation (one time)
 npm install -g obsidian-plugin-config
 
-# Mise à jour du plugin
-cd votre-plugin
+# Update the plugin
+cd your-plugin
 obsidian-inject
 ```
 
-Cela met à jour :
+This updates:
 
-- Scripts locaux (esbuild, acp, etc.)
-- Configuration package.json
-- Dépendances requises
+- Local scripts (esbuild, acp, etc.)
+- package.json configuration
+- Required dependencies
 
-## Support SASS (Optionnel)
+## SASS Support (Optional)
 
-Pour ajouter le support SASS/SCSS à votre plugin :
+To add SASS/SCSS support to your plugin:
 
 ```bash
-# Avec obsidian-plugin-config local
+# With local obsidian-plugin-config
 cd ../obsidian-plugin-config
-yarn inject-sass ../votre-plugin --yes
+yarn inject-sass ../your-plugin --yes
 
-# Ou avec le package NPM global
-cd votre-plugin
+# Or with global NPM package
+cd your-plugin
 obsidian-inject --sass
 ```
 
-**Ce que l'injection SASS ajoute :**
+**What SASS injection adds:**
 
-- ✅ Dépendance `esbuild-sass-plugin`
-- ✅ Compilation automatique des fichiers `.scss`
-- ✅ Détection prioritaire : `src/styles.scss` > `src/styles.css` > `styles.css`
-- ✅ Nettoyage automatique du CSS généré
+- ✅ `esbuild-sass-plugin` dependency
+- ✅ Automatic compilation of `.scss` files
+- ✅ Priority detection: `src/styles.scss` > `src/styles.css` > `styles.css`
+- ✅ Automatic cleanup of generated CSS
 
-**Utilisation :**
+**Usage:**
 
-1. Créer `src/styles.scss` au lieu de `styles.css`
-2. Utiliser les variables, mixins et fonctionnalités SASS
-3. Le build compile automatiquement vers CSS
+1. Create `src/styles.scss` instead of `styles.css`
+2. Use SASS variables, mixins and features
+3. Build automatically compiles to CSS
 
 ## Architecture
 
-Plugin **autonome** avec scripts locaux dans `./scripts/` :
+**Self-contained** plugin with local scripts in `./scripts/`:
 
-- `esbuild.config.ts` - Configuration build
-- `acp.ts` - Automation Git
-- `update-version.ts` - Gestion versions
-- `utils.ts` - Fonctions utilitaires
+- `esbuild.config.ts` - Build configuration
+- `acp.ts` - Git automation
+- `update-version.ts` - Version management
+- `utils.ts` - Utility functions
 
-Aucune dépendance externe requise pour fonctionner.
+No external dependencies required to function.

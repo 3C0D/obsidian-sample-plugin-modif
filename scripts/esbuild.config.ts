@@ -172,7 +172,7 @@ async function createBuildContext(buildPath: string, isProd: boolean, entryPoint
     // Add SASS plugin if SCSS files are detected
     ...(hasSass ? [
       // Dynamic import for SASS plugin to avoid dependency issues when not needed
-      await (async () => {
+      await (async (): Promise<esbuild.Plugin> => {
         try {
           // @ts-ignore - esbuild-sass-plugin is installed during injection
           const { sassPlugin } = await import('esbuild-sass-plugin');
