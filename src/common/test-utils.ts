@@ -1,6 +1,7 @@
 // COMMENTED FOR AUTONOMOUS VERSION
 // import { NoticeHelper, SettingsHelper } from "obsidian-plugin-config/utils";
-import { App, Plugin, PluginSettingTab } from 'obsidian';
+import type { App, Plugin } from 'obsidian';
+import { PluginSettingTab } from 'obsidian';
 
 /**
  * Test file to demonstrate the new centralized utils

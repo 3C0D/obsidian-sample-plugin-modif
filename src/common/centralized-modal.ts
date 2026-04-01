@@ -1,7 +1,8 @@
 // This file demonstrates importing from centralized configuration
 // It's a copy of the modal from obsidian-plugin-config for testing
 
-import { App, Modal } from 'obsidian';
+import type { App } from 'obsidian';
+import { Modal } from 'obsidian';
 
 export interface CentralizedModalOptions {
 	title: string;

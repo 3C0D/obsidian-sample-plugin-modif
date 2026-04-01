@@ -1,4 +1,5 @@
-import { App, Plugin, PluginSettingTab, Setting, Notice } from 'obsidian';
+import type { App } from 'obsidian';
+import { Plugin, PluginSettingTab, Setting, Notice } from 'obsidian';
 import { GenericConfirmModal } from './common/generic-confirm-modal.js';
 // Import from centralized configuration (simulated for demo)
 import { showCentralizedModal } from './common/centralized-modal.js';
