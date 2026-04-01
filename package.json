@@ -29,20 +29,22 @@
     "help": "tsx scripts/help.ts",
     "h": "tsx scripts/help.ts",
     "lint": "eslint . --ext .ts",
-    "lint:fix": "eslint . --ext .ts --fix"
+    "lint:fix": "eslint . --ext .ts --fix",
+    "prettier": "npx prettier --check '**/*.{ts,json}'",
+    "prettier:fix": "npx prettier --write '**/*.{ts,json}'"
   },
   "devDependencies": {
-    "@types/node": "^22.15.26",
-    "@types/semver": "^7.7.0",
-    "builtin-modules": "3.3.0",
-    "dedent": "^1.6.0",
-    "dotenv": "^16.4.5",
+    "@types/node": "latest",
+    "@types/semver": "latest",
+    "builtin-modules": "latest",
+    "dedent": "latest",
+    "dotenv": "latest",
     "esbuild": "latest",
     "fs-extra": "^11.2.0",
     "obsidian": "*",
-    "obsidian-typings": "^3.9.5",
-    "semver": "^7.7.2",
-    "tsx": "^4.19.4",
+    "obsidian-typings": "latest",
+    "semver": "latest",
+    "tsx": "^4.21.0",
     "typescript": "^5.8.2",
     "@types/eslint": "latest",
     "@typescript-eslint/eslint-plugin": "latest",
@@ -50,7 +52,7 @@
     "eslint": "latest",
     "eslint-import-resolver-typescript": "latest",
     "jiti": "latest",
-    "prettier": "^3.4.0"
+    "prettier": "latest"
   },
   "dependencies": {
     "@types/lodash": "^4.17.17",
