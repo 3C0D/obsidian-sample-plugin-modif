@@ -30,8 +30,8 @@
     "h": "tsx scripts/help.ts",
     "lint": "eslint . --ext .ts",
     "lint:fix": "eslint . --ext .ts --fix",
-    "prettier": "npx prettier --check '**/*.{ts,json}'",
-    "prettier:fix": "npx prettier --write '**/*.{ts,json}'"
+    "prettier": "prettier --check '**/*.{ts,json}'",
+    "prettier:fix": "prettier --write '**/*.{ts,json}'"
   },
   "devDependencies": {
     "@types/node": "latest",
@@ -52,7 +52,8 @@
     "eslint": "latest",
     "eslint-import-resolver-typescript": "latest",
     "jiti": "latest",
-    "prettier": "latest"
+    "prettier": "latest",
+    "tslib": "2.4.0"
   },
   "dependencies": {
     "@types/lodash": "^4.17.17",

@@ -143,7 +143,16 @@ async function validateEnvironment(): Promise<void> {
 }
 
 async function getBuildPath(isProd: boolean): Promise<string> {
-	// Check if we should use real vault (either -r flag or "real" argument)
+	// Check if we're already inside an Obsidian plugins folder
+	const pluginsPath = path.join('.obsidian', 'plugins');
+	const isInPluginsFolder = pluginDir.includes(pluginsPath);
+
+	if (isInPluginsFolder) {
+		console.log('ℹ️  Building in Obsidian plugins folder (in-place development)');
+		return pluginDir;
+	}
+
+	// External development: check for vault paths
 	const useRealVault = process.argv.includes('-r') || process.argv.includes('real');
 
 	// If production build without redirection, return plugin directory
@@ -155,28 +164,14 @@ async function getBuildPath(isProd: boolean): Promise<string> {
 	const envKey = useRealVault ? 'REAL_VAULT' : 'TEST_VAULT';
 	const vaultPath = process.env[envKey]?.trim();
 
-	// If empty or undefined, we're already in the plugin folder
-	if (!vaultPath) {
-		// Check if we're in Obsidian plugins folder
-		const currentPath = process.cwd();
-		const isInObsidianPlugins =
-			currentPath.includes('.obsidian/plugins') ||
-			currentPath.includes('.obsidian\\plugins');
-
-		if (isInObsidianPlugins) {
-			// In obsidian/plugins: allow in-place development
-			console.log(`ℹ️  Building in Obsidian plugins folder (in-place development)`);
-			return pluginDir;
-		} else {
-			// External development: prompt for missing vault path
-			const newPath = await promptForVaultPath(envKey);
-			await updateEnvFile(envKey, newPath);
-			config();
-			return getVaultPath(newPath);
-		}
+	// If empty or undefined, prompt for vault path
+	if (!vaultPath || vaultPath.startsWith('/path/to/your/')) {
+		const newPath = await promptForVaultPath(envKey);
+		await updateEnvFile(envKey, newPath);
+		config();
+		return getVaultPath(newPath);
 	}
 
-	// If we reach here, use the vault path directly
 	return getVaultPath(vaultPath);
 }
 
