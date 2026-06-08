@@ -34,8 +34,7 @@
     "prettier:fix": "prettier --write '**/*.{ts,json}'"
   },
   "devDependencies": {
-    "@types/node": "latest",
-    "@types/semver": "latest",
+    "@types/node": "^25.9.2",
     "builtin-modules": "latest",
     "dedent": "latest",
     "dotenv": "latest",
@@ -43,7 +42,6 @@
     "fs-extra": "^11.2.0",
     "obsidian": "*",
     "obsidian-typings": "latest",
-    "semver": "latest",
     "tsx": "^4.21.0",
     "typescript": "^5.8.2",
     "@types/eslint": "latest",

@@ -60,7 +60,7 @@
     {
       "label": "Obsidian Inject (no confirm)",
       "type": "shell",
-      "command": "obsidian-inject --no",
+      "command": "obsidian-inject --yes",
       "group": "build",
       "presentation": { "reveal": "always", "panel": "shared" },
       "problemMatcher": []
