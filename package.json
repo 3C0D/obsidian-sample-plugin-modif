@@ -1,7 +1,7 @@
 {
   "name": "obsidian-sample-plugin-modif",
-  "version": "1.0.2",
-  "description": "Template Obsidian plugin modifié avec scripts intégrés",
+  "version": "1.0.0",
+  "description": "Modified Obsidian plugin template with integrated scripts",
   "type": "module",
   "main": "src/index.ts",
   "license": "MIT",

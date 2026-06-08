@@ -124,7 +124,7 @@ obsidian-inject
 obsidian-inject
 
 # Without confirmation
-obsidian-inject --no
+obsidian-inject --yes
 
 # Interactive mode (choose what to inject)
 obsidian-inject --interactive
