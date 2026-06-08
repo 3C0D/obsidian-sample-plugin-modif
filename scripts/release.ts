@@ -4,6 +4,7 @@ import { join } from 'path';
 import {
   askConfirmation,
   askQuestion,
+  cleanInput,
   createReadlineInterface,
   gitExec,
   gitOutput,
@@ -71,12 +72,12 @@ async function createTag(): Promise<void> {
 }
 
 async function doCommit(currentVersion: string | undefined, tag: string): Promise<void> {
-  const message = await askQuestion(
+  const raw = await askQuestion(
     `Enter the commit message for version ${currentVersion}: `,
     rl
   );
   rl.close();
-  await doNextSteps(message, tag);
+  await doNextSteps(cleanInput(raw), tag);
 }
 
 async function doNextSteps(message: string, tag: string): Promise<void> {
@@ -87,12 +88,15 @@ async function doNextSteps(message: string, tag: string): Promise<void> {
 
   try {
     gitExec('git add -A');
-    gitExec('git commit -m "update tag description"');
+    const status = gitOutput('git status --porcelain');
+    if (status) {
+      gitExec('git commit -m "update tag description"');
 
-    // Ensure Git is synchronized before pushing
-    await ensureGitSync();
+      // Ensure Git is synchronized before pushing
+      await ensureGitSync();
 
-    gitExec('git push');
+      gitExec('git push');
+    }
   } catch (error: unknown) {
     console.error('Error:', error instanceof Error ? error.message : String(error));
   }
